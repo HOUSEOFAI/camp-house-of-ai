@@ -436,7 +436,8 @@ async function signRegistry(ev, form){
       });
     }catch(e){ console.error('registry post failed', e); }
   }
-  fine.innerHTML = 'THE HOUSE RECEIVES YOU, ' + name.toUpperCase() + ' ✦<br>YOUR FIRST LETTER ARRIVES AT SUNRISE';
+  const letter = 'mailto:lisa@houseofai.boston?subject=' + encodeURIComponent('CAMP REGISTRY — ' + name) + '&body=' + encodeURIComponent('The House is asked to receive:' + '\n\nName: ' + name + '\nAddress: ' + email + '\nSigned: ' + new Date().toDateString());
+  fine.innerHTML = 'THE HOUSE RECEIVES YOU, ' + name.toUpperCase() + ' ✦<br><a href="' + letter + '" style="color:#93122d;font-weight:600">TAP TO POST YOUR LETTER →</a><br>YOUR FIRST LETTER ARRIVES AT SUNRISE';
   form.querySelectorAll('input').forEach(i=>i.value='');
 }
 
@@ -467,37 +468,29 @@ function addMsg(text, who){
   log.scrollTop = log.scrollHeight;
 }
 
-async function askKeeper(){
+function keeperAnswer(q){
+  q = q.toLowerCase();
+  const book = [
+    [['join','sign','register','free','member','start','how do i'], "Membership is complimentary, always. Sign the Camp Registry at the top of this very page — your name and correspondence address — and your first Morning Letter arrives at sunrise."],
+    [['letter','skill','daily','learn','teach','lesson'], "One skill arrives each sunrise: five-year-old simple, CEO powerful — mindset, tech magic, copy, business, Claude, ChatGPT, and manners. Pull the lever in the Lodge and today's letter unfolds for you."],
+    [['lodge','community','thread','share','win','post'], "The Lodge is our members' hall — a fresh thread every sunrise, campers posting wins in the Logbook, and applause all around. The door is on this page: Enter the Lodge."],
+    [['merit','patch','honor','badge','earn'], "Sixteen honors hang on the Merit Wall — earned by streaks, wins, and tasks fired. The final honor, the Pontoon, is conferred in person, on the water."],
+    [['vip','price','cost','hire','work with','7000','7,000'], "The VIP Day is seven thousand — one devoted day, your business on the table, and you leave with agents doing work you swore only you could do. Write to the House and I shall flag it for the founder by morning."],
+    [['witch','retreat','beast','maine','12,000','15,000','denmark'], "Witch Camp is seven days at our vintage lakefront camp in Denmark, Maine — twelve thousand, rising to fifteen — where your bespoke Magnificent Beast™ is installed: agents built, business fully autonomous before you leave the water."],
+    [['refund','cancel','billing','payment','charge'], "Matters of the ledger the founder tends personally. Write to the House — lisa@houseofai.boston — and it shall be flagged for her by morning."],
+    [['who','founder','lisa','about','behind'], "The House was founded by Lisa of HOUSE OF AI — Denmark, Maine — who fired herself as the bottleneck and built this Camp as the proof."],
+    [['keeper','you','robot','ai','human'], "I am the Keeper of the House — always at the door, day and night. I keep the book of everything at Camp, and what I do not know, the House answers by morning."]
+  ];
+  for (const pair of book){ if(pair[0].some(k=>q.includes(k))) return pair[1]; }
+  return "A fine question — and one I would rather answer rightly than quickly. Post it as a letter to the House (lisa@houseofai.boston) and you shall have your answer by morning.";
+}
+function askKeeper(){
   const inp = document.getElementById('deskInput');
   const q = inp.value.trim();
   if(!q) return;
   inp.value = '';
   addMsg(q,'g');
-  keeperHistory.push({role:'user', content:q});
-  const log = document.getElementById('deskLog');
-  const think = document.createElement('div');
-  think.className = 'thinking';
-  think.textContent = 'the Keeper is crossing the hall…';
-  log.appendChild(think); log.scrollTop = log.scrollHeight;
-  try{
-    const resp = await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:KEEPER_SYS,messages:keeperHistory})
-    });
-    const data = await resp.json();
-    const text = (data.content||[]).filter(i=>i.type==='text').map(i=>i.text).join('\n').trim();
-    think.remove();
-    if(text){
-      keeperHistory.push({role:'assistant', content:text});
-      addMsg(text,'k');
-    } else {
-      addMsg('Forgive me — the hall is drafty and I missed that. Would you ask once more? — warmly, from the House','k');
-    }
-  }catch(err){
-    think.remove();
-    addMsg('Forgive me — the line to the House flickered. Do try once more in a moment. — warmly, from the House','k');
-  }
+  setTimeout(function(){ addMsg(keeperAnswer(q) + ' — warmly, from the House','k'); }, 500);
 }
 </script>
 </body>
