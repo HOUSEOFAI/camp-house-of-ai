@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Camp House of AI™ — At the Lake</title>
+<meta name="description" content="Camp House of AI™ — one AI skill a day from the lake in Denmark, Maine. Free camp membership. Your first letter arrives at sunrise.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;500;600&family=La+Belle+Aurore&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --linen:#f6f1e6; --linen-2:#efe8d8; --paper:#fbf7ec;
+    --pine:#20362b; --pine-d:#16261e;
+    --navy:#1e2f45; --navy-d:#152233;
+    --lake:#41627c;
+    --cran:#7d2231; --cran-2:#96303f;
+    --brass:#a8874a; --brass-2:#c2a05e;
+    --oak:#6e4f33; --leather:#5a3d28;
+    --ink:#26302a; --ink-soft:#4d5a51;
+    --stone:#b9b2a2;
+  }
+  html{scroll-behavior:smooth}
+  body{background:var(--linen);color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:19px;line-height:1.75;
+    background-image:radial-gradient(rgba(32,54,43,.025) 1px, transparent 1px);background-size:5px 5px}
+  .wrap{max-width:640px;margin:0 auto;padding:0 26px}
+  .center{text-align:center}
+  a{color:inherit}
+
+  /* --- shared type --- */
+  .plaque{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.42em;color:var(--brass)}
+  .marker{display:inline-flex;align-items:center;gap:10px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.3em;color:var(--pine)}
+  .marker::before,.marker::after{content:'';width:26px;height:1px;background:var(--brass)}
+  h1,h2{font-family:'Playfair Display',serif;font-weight:600;color:var(--pine)}
+  h2{font-size:clamp(30px,7.4vw,42px);font-style:italic;line-height:1.12}
+  .script{font-family:'La Belle Aurore',cursive;color:var(--cran);font-size:clamp(22px,5.4vw,28px);line-height:1.3}
+  .lead{font-size:clamp(19px,4.4vw,21.5px);font-style:italic;color:var(--ink-soft)}
+
+  /* --- pendleton camp-blanket stripe --- */
+  .stripe{height:18px;background:linear-gradient(90deg,
+    var(--navy) 0 18%, var(--linen) 18% 21%, var(--cran) 21% 34%, var(--linen) 34% 36%,
+    var(--brass-2) 36% 44%, var(--linen) 44% 46%, var(--pine) 46% 62%, var(--linen) 62% 64%,
+    var(--lake) 64% 76%, var(--linen) 76% 78%, var(--cran) 78% 88%, var(--linen) 88% 90%, var(--navy) 90% 100%)}
+  .stripe.thin{height:8px}
+
+  /* --- rope divider --- */
+  .rope{width:190px;margin:44px auto;border:0;height:8px;position:relative;
+    background:repeating-linear-gradient(-55deg, #b39a6e 0 5px, #93794f 5px 10px);border-radius:4px;opacity:.85}
+  .rope::before,.rope::after{content:'';position:absolute;top:50%;width:14px;height:14px;border:2px solid #93794f;border-radius:50%;transform:translateY(-50%);background:var(--linen)}
+  .rope::before{left:-22px}.rope::after{right:-22px}
+
+  /* --- wax seal --- */
+  .seal{width:74px;height:74px;margin:0 auto;border-radius:50%;position:relative;
+    background:radial-gradient(circle at 34% 28%, var(--cran-2), var(--cran) 55%, #5e1620 100%);
+    box-shadow:0 6px 16px rgba(125,34,49,.4), inset 0 2px 5px rgba(255,255,255,.22), inset 0 -4px 8px rgba(0,0,0,.3);
+    display:flex;align-items:center;justify-content:center}
+  .seal::before{content:'';position:absolute;inset:9px;border:1px solid rgba(246,241,230,.4);border-radius:50%}
+  .seal span{font-family:'Cinzel',serif;font-size:26px;color:var(--linen);text-shadow:0 1px 2px rgba(0,0,0,.4)}
+
+  /* ================= I · ARRIVAL DOCK ================= */
+  .dock-hero{position:relative;overflow:hidden;
+    background:linear-gradient(180deg,#e9ece6 0%,#dfe6e2 22%,#c6d3cc 55%,#9db3a8 100%)}
+  .dock-hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:
+    radial-gradient(ellipse 150% 42% at 50% 118%, rgba(22,38,30,.62), transparent 62%),
+    radial-gradient(ellipse 100% 36% at 50% -6%, rgba(252,250,242,.85), transparent 60%)}
+  .dock-hero .wrap{position:relative;padding-top:64px;padding-bottom:96px;text-align:center}
+  .hero-sign{display:inline-block;background:linear-gradient(180deg,#6e4f33,#5a3d28);color:#f3ead6;padding:13px 30px 12px;
+    font-family:'Cinzel',serif;font-size:11px;letter-spacing:.34em;
+    box-shadow:0 5px 14px rgba(40,26,14,.45), inset 0 1px 0 rgba(255,255,255,.15);
+    border:1px solid #4a3120;position:relative}
+  .hero-sign::before,.hero-sign::after{content:'';position:absolute;top:-9px;width:5px;height:5px;border-radius:50%;background:var(--brass-2);box-shadow:0 1px 2px rgba(0,0,0,.5)}
+  .hero-sign::before{left:22px}.hero-sign::after{right:22px}
+  .hero-est{margin:34px 0 6px}
+  h1{font-size:clamp(44px,11vw,78px);font-style:italic;line-height:.98;letter-spacing:-.01em}
+  h1 .tm{font-size:.24em;vertical-align:1.9em;letter-spacing:.1em;font-style:normal;color:var(--brass)}
+  .hero-script{margin-top:22px}
+  .hero-lead{max-width:470px;margin:20px auto 0;color:#33463c}
+  .hero-note{max-width:440px;margin:16px auto 0;font-size:18px;color:#40544a}
+
+  /* ================= II · REGISTRY (guest book) ================= */
+  .registry{margin:52px auto 0;max-width:440px;position:relative;text-align:left}
+  .registry .book{background:var(--paper);border:1px solid #d6cbae;padding:38px 32px 36px;
+    box-shadow:0 26px 60px rgba(21,34,25,.4), 0 2px 0 #e4dcc6 inset;position:relative}
+  .registry .book::before{content:'';position:absolute;left:0;top:0;bottom:0;width:22px;
+    background:linear-gradient(90deg,#1e2f45 0 70%,#15223399 100%);box-shadow:inset -3px 0 6px rgba(0,0,0,.35)}
+  .registry .book::after{content:'';position:absolute;left:22px;top:0;bottom:0;width:1px;background:#d6cbae}
+  .book-in{padding-left:20px}
+  .book h3{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.36em;color:var(--navy);text-align:center}
+  .book .yr{font-family:'Playfair Display',serif;font-style:italic;font-size:24px;text-align:center;color:var(--pine);margin:6px 0 4px}
+  .book .inv{font-family:'La Belle Aurore',cursive;font-size:21px;color:var(--cran);text-align:center;display:block;margin-bottom:16px}
+  .fld{width:100%;border:0;border-bottom:1px solid #c3b791;background:transparent;padding:15px 2px 7px;
+    font-family:'La Belle Aurore',cursive;font-size:21px;color:var(--navy);outline:none}
+  .fld::placeholder{font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.24em;color:#a89a74}
+  .fld:focus{border-bottom-color:var(--brass)}
+  .brass-btn{display:block;width:100%;margin-top:30px;padding:17px;cursor:pointer;
+    font-family:'Cinzel',serif;font-size:12px;letter-spacing:.28em;color:#2b2010;border:1px solid #8a6c38;
+    background:linear-gradient(180deg,#d4b573,#a8874a 55%,#8f7038);
+    box-shadow:0 4px 10px rgba(90,61,40,.35), inset 0 1px 0 rgba(255,255,255,.45);transition:filter .25s}
+  .brass-btn:hover{filter:brightness(1.06)}
+  .brass-btn:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+  .book .fine{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.22em;color:#9b8d68;text-align:center;margin-top:14px;line-height:2}
+
+  /* ================= sections ================= */
+  section{padding:84px 0}
+  .museum{display:inline-block;background:var(--paper);border:1px solid #d8cdb0;padding:10px 22px 9px;
+    font-family:'Cinzel',serif;font-size:9px;letter-spacing:.3em;color:var(--ink-soft);
+    box-shadow:0 3px 8px rgba(32,54,43,.1)}
+  .museum b{color:var(--cran);font-weight:600}
+
+  /* postcard (boathouse) */
+  .postcard{margin:46px auto 0;max-width:480px;background:var(--paper);border:1px solid #d8cdb0;padding:30px 30px 26px;text-align:left;
+    box-shadow:0 16px 40px rgba(32,54,43,.18);position:relative;transform:rotate(-.6deg)}
+  .postcard::after{content:'';position:absolute;top:16px;right:16px;width:52px;height:62px;border:1px solid #cbbf9d;
+    background:repeating-linear-gradient(0deg,transparent 0 5px, rgba(125,34,49,.08) 5px 6px)}
+  .postcard .pc-k{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.3em;color:var(--lake)}
+  .postcard h3{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:26px;color:var(--pine);margin:8px 0 10px;max-width:78%}
+  .postcard p{font-size:17.5px;color:var(--ink-soft)}
+  .postcard .sig{font-family:'La Belle Aurore',cursive;font-size:20px;color:var(--cran);margin-top:14px;display:block}
+
+  /* tool shed — library card catalogue */
+  .cards{margin-top:44px;display:grid;gap:14px}
+  .lib-card{background:var(--paper);border:1px solid #d8cdb0;display:grid;grid-template-columns:54px 1fr;align-items:stretch;
+    box-shadow:0 6px 16px rgba(32,54,43,.12);text-align:left;overflow:hidden}
+  .lib-card .tab{background:var(--pine);color:var(--linen);display:flex;align-items:center;justify-content:center;
+    font-family:'Cinzel',serif;font-size:10px;letter-spacing:.14em;writing-mode:vertical-rl;transform:rotate(180deg);padding:12px 0}
+  .lib-card:nth-child(2) .tab{background:var(--navy)}
+  .lib-card:nth-child(3) .tab{background:var(--cran)}
+  .lib-card:nth-child(4) .tab{background:var(--lake)}
+  .lib-card:nth-child(5) .tab{background:var(--oak)}
+  .lib-card:nth-child(6) .tab{background:var(--pine-d)}
+  .lib-card:nth-child(7) .tab{background:var(--navy-d)}
+  .lib-card .in{padding:16px 18px}
+  .lib-card h4{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:20px;color:var(--pine)}
+  .lib-card p{font-size:16px;color:var(--ink-soft);line-height:1.55}
+
+  /* lake library — today's skill */
+  .lake-lib{background:linear-gradient(180deg,var(--linen-2),#e6ddc8)}
+  .skill-note{margin:44px auto 0;max-width:480px;background:var(--paper);padding:34px 30px;text-align:left;position:relative;
+    box-shadow:0 18px 44px rgba(32,54,43,.18);border-top:5px solid var(--cran)}
+  .skill-note::before{content:'№ 001';position:absolute;top:-15px;right:22px;background:var(--navy);color:var(--linen);
+    font-family:'Cinzel',serif;font-size:10px;letter-spacing:.2em;padding:6px 14px;box-shadow:0 3px 8px rgba(21,34,51,.35)}
+  .skill-note .k{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.3em;color:var(--brass)}
+  .skill-note h3{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:27px;color:var(--pine);margin:8px 0 10px}
+  .skill-note p{font-size:17.5px;color:var(--ink-soft)}
+  .skill-note .hand{font-family:'La Belle Aurore',cursive;font-size:20px;color:var(--cran);display:block;margin-top:16px}
+
+  /* command house — dark */
+  .command{background:linear-gradient(180deg,var(--pine) 0%,var(--pine-d) 100%);color:#e9e2cf}
+  .command h2{color:#f2ecd9}
+  .command .lead{color:#c4cdb9}
+  .command .plaque{color:var(--brass-2)}
+  .lantern{margin:44px auto 0;max-width:470px;background:rgba(246,241,230,.05);border:1px solid rgba(168,135,74,.45);
+    padding:32px 30px;text-align:left;position:relative}
+  .lantern::before{content:'◆';position:absolute;top:-13px;left:50%;transform:translateX(-50%);color:var(--brass-2);
+    background:var(--pine);padding:0 14px;font-size:13px}
+  .lantern h3{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:26px;color:#f2ecd9;margin-bottom:10px}
+  .lantern p{font-size:17.5px;color:#cfd6c2}
+  .lantern .tag{display:inline-block;margin-top:14px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:.24em;
+    color:var(--brass-2);border:1px dashed rgba(168,135,74,.6);padding:6px 12px}
+
+  /* the beast — offers */
+  .beast{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-d) 100%);color:#e7e4d8}
+  .beast h2{color:#f0ead8}
+  .beast .lead{color:#b9c2cd}
+  .beast .plaque{color:var(--brass-2)}
+  .estate-offer{margin-top:30px;background:rgba(246,241,230,.04);border:1px solid rgba(168,135,74,.4);text-align:left;overflow:hidden}
+  .estate-offer .stripe{height:9px}
+  .eo-in{padding:30px 28px 32px}
+  .eo-in .lv{font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.32em;color:var(--brass-2)}
+  .eo-in h3{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:28px;color:#f2ecd9;margin:8px 0 3px}
+  .eo-in .price{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.16em;color:#a9b3bf;margin-bottom:12px}
+  .eo-in .price s{opacity:.55}
+  .eo-in p{font-size:17.5px;color:#c8cfd8}
+  .eo-in .cr{color:var(--brass-2);font-style:italic}
+
+  /* lighthouse */
+  .lighthouse{background:
+    radial-gradient(ellipse 130% 55% at 50% 118%, rgba(30,47,69,.28), transparent 62%),
+    linear-gradient(180deg,#eee9db,#dfe3da)}
+  .lighthouse blockquote{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:clamp(24px,6vw,33px);line-height:1.35;color:var(--pine);max-width:520px;margin:0 auto}
+  .lighthouse blockquote .c{color:var(--cran)}
+  .beam{width:1px;height:64px;margin:0 auto 26px;background:linear-gradient(180deg,var(--brass-2),transparent)}
+
+  /* legacy hall / footer */
+  footer{background:var(--pine-d);color:#a7b0a0;text-align:center;padding:56px 26px 64px}
+  footer .plaque{color:var(--brass-2)}
+  footer p{font-style:italic;font-size:16.5px;margin-top:12px;line-height:1.9}
+  footer .hand{font-family:'La Belle Aurore',cursive;font-size:21px;color:#cdbd90;display:block;margin-top:18px}
+
+  .crest{width:64px;height:64px;margin:0 auto 14px;display:block}
+  /* ===== THE KEEPER'S DESK ===== */
+  .bell{position:fixed;right:18px;bottom:18px;z-index:90;width:62px;height:62px;border-radius:50%;border:1px solid #8a6c38;cursor:pointer;
+    background:radial-gradient(circle at 32% 28%,#e2c88a,#a8874a 60%,#8f7038);
+    box-shadow:0 8px 22px rgba(90,61,40,.45), inset 0 2px 3px rgba(255,255,255,.5);
+    display:flex;align-items:center;justify-content:center;transition:transform .2s}
+  .bell:hover{transform:scale(1.06)}
+  .bell svg{width:30px;height:30px}
+  .desk{position:fixed;right:12px;bottom:90px;z-index:95;width:min(370px,calc(100vw - 24px));max-height:70vh;
+    background:var(--paper);border:1px solid #cdbf9e;box-shadow:0 26px 60px rgba(21,34,25,.45);
+    display:none;flex-direction:column;overflow:hidden}
+  .desk.open{display:flex}
+  .desk-hd{background:var(--pine);color:var(--linen);padding:14px 18px;display:flex;justify-content:space-between;align-items:center}
+  .desk-hd .t{font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.28em}
+  .desk-hd .x{background:none;border:0;color:var(--brass-2);font-size:19px;cursor:pointer;line-height:1}
+  .desk-log{flex:1;overflow-y:auto;padding:16px 14px;display:flex;flex-direction:column;gap:10px;min-height:180px}
+  .msg{max-width:86%;padding:11px 14px;font-size:16px;line-height:1.55}
+  .msg.k{align-self:flex-start;background:var(--linen);border:1px solid #ddd2b4;border-left:3px solid var(--brass);color:var(--ink)}
+  .msg.g{align-self:flex-end;background:var(--navy);color:#eef1e9}
+  .msg.k .sig{font-family:'La Belle Aurore',cursive;font-size:16px;color:var(--cran);display:block;margin-top:4px}
+  .desk-in{display:flex;border-top:1px solid #ddd2b4;background:var(--paper)}
+  .desk-in input{flex:1;border:0;background:transparent;padding:15px 14px;font-family:'Cormorant Garamond',serif;font-size:16.5px;color:var(--ink);outline:none}
+  .desk-in input::placeholder{font-style:italic;color:#a89a74}
+  .desk-in button{border:0;cursor:pointer;padding:0 20px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.2em;color:#2b2010;
+    background:linear-gradient(180deg,#d4b573,#a8874a)}
+  .thinking{font-family:'La Belle Aurore',cursive;color:var(--lake);font-size:16px;align-self:flex-start;padding:2px 6px}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="stripe" role="presentation"></div>
+
+<!-- ═══════════ I · THE ARRIVAL DOCK ═══════════ -->
+<header class="dock-hero">
+  <div class="wrap">
+    <div class="hero-sign">PRIVATE DOCK · GUESTS ANNOUNCE THEMSELVES</div>
+    <div class="hero-est plaque">EST. ON THE WATER · DENMARK, MAINE</div>
+    <h1>Camp<br>House of AI<span class="tm">™</span></h1>
+    <span class="script hero-script">one skill a day, from the lake to you</span>
+    <p class="lead hero-lead">A camp for women entrepreneurs over forty who are finished being the bottleneck in their own beautiful lives.</p>
+    <p class="hero-note">Each morning, one AI skill arrives like a letter — simple enough for a five-year-old, refined enough for a CEO. The business hums quietly behind the scenes. You are out on the water.</p>
+
+    <!-- ═══ II · THE GUEST REGISTRY ═══ -->
+    <form class="registry" onsubmit="signRegistry(event, this)">
+      <div class="book">
+        <div class="book-in">
+          <h3>CAMP REGISTRY</h3>
+          <div class="yr">Volume MMXXVI</div>
+          <span class="inv">kindly sign, and the house will know you</span>
+          <input class="fld" type="text" placeholder="GIVEN NAME" aria-label="First name" required>
+          <input class="fld" type="email" placeholder="CORRESPONDENCE ADDRESS (EMAIL)" aria-label="Email" required>
+          <button class="brass-btn" type="submit">SIGN THE REGISTRY</button>
+          <div class="fine">MEMBERSHIP IS COMPLIMENTARY · DEPART WHENEVER YOU WISH</div>
+        </div>
+      </div>
+    </form>
+  </div>
+</header>
+
+<div class="stripe thin" role="presentation"></div>
+
+<!-- ═══════════ III · THE BOATHOUSE ═══════════ -->
+<section class="center">
+  <div class="wrap">
+    <svg class="crest" viewBox="0 0 80 80" aria-hidden="true"><path d="M8 38 Q12 52 26 54 H54 Q68 52 72 38 Q58 46 40 46 Q22 46 8 38 Z" fill="#93122d" stroke="#1e2f45" stroke-width="2.5"/><path d="M16 46 Q40 51 64 46" stroke="#6e0e22" stroke-width="2" fill="none"/><path d="M12 40 Q40 48 68 40" stroke="#f3ecd9" stroke-width="1.6" fill="none"/><path d="M52 12 L36 52" stroke="#c89a5b" stroke-width="3"/><path d="M50 8 Q56 8 56 14 Q56 21 50 21 Q45 21 45 14 Q45 8 50 8 Z" fill="#c89a5b" stroke="#1e2f45" stroke-width="2"/><path d="M14 62 Q22 58 30 62 M46 62 Q54 58 62 62" stroke="#5b87a6" stroke-width="2.5" fill="none"/></svg>
+    <span class="marker">THE BOATHOUSE</span>
+    <h2 style="margin-top:14px">What we keep here</h2>
+    <hr class="rope">
+    <p class="lead" style="max-width:480px;margin:0 auto">Not software. Not another platform. A daily practice, kept the way old camps keep their canoes — varnished, ready, and taken out every single morning.</p>
+
+    <div class="postcard">
+      <div class="pc-k">POSTCARD · FROM THE LAKE</div>
+      <h3>One skill arrives with the mist, every morning</h3>
+      <p>Five minutes over coffee. No jargon, no overwhelm, nothing to install. If a five-year-old couldn't follow it and a CEO wouldn't frame it — it never leaves the boathouse.</p>
+      <span class="sig">— see you at sunrise, the House</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ IV · THE TOOL SHED ═══════════ -->
+<section class="center" style="padding-top:0">
+  <div class="wrap">
+    <svg class="crest" viewBox="0 0 80 80" aria-hidden="true"><path d="M16 32 Q16 25 24 25 H56 Q64 25 64 32 L61 56 Q60 63 52 63 H28 Q20 63 19 56 Z" fill="#c89a5b" stroke="#1e2f45" stroke-width="2.5"/><path d="M17 36 H63 M18 43 H62 M18.5 50 H61.5 M19.5 57 H60.5" stroke="#a67a3e" stroke-width="2" fill="none"/><path d="M22 25 Q22 14 40 14 Q58 14 58 25" fill="#d9b078" stroke="#1e2f45" stroke-width="2.5"/><path d="M28 21 H52" stroke="#a67a3e" stroke-width="1.8"/><rect x="36" y="20" width="8" height="18" rx="2" fill="#93122d" stroke="#1e2f45" stroke-width="2"/><rect x="36.5" y="28" width="7" height="5" fill="none" stroke="#c9a349" stroke-width="2"/></svg>
+    <span class="marker">THE TOOL SHED</span>
+    <h2 style="margin-top:14px">Seven drawers,<br>kept oiled and sharp</h2>
+    <hr class="rope">
+    <div class="cards">
+      <div class="lib-card"><div class="tab">MINDSET</div><div class="in"><h4>Mindset</h4><p>Think like a woman with staff, not a woman with tabs open.</p></div></div>
+      <div class="lib-card"><div class="tab">TECH MAGIC</div><div class="in"><h4>Tech Magic</h4><p>The small spells that make you feel like a sorceress by lunch.</p></div></div>
+      <div class="lib-card"><div class="tab">COPY</div><div class="in"><h4>Copy</h4><p>Words that sound like you on your best morning, written in minutes.</p></div></div>
+      <div class="lib-card"><div class="tab">BUSINESS</div><div class="in"><h4>Business</h4><p>Decisions, offers, and operations — sharpened daily.</p></div></div>
+      <div class="lib-card"><div class="tab">CLAUDE</div><div class="in"><h4>Claude</h4><p>The thoughtful one. How to brief it like a trusted counsel.</p></div></div>
+      <div class="lib-card"><div class="tab">CHATGPT</div><div class="in"><h4>ChatGPT</h4><p>The quick one. How to make it fast without making it sloppy.</p></div></div>
+      <div class="lib-card"><div class="tab">MANNERS</div><div class="in"><h4>AI Manners</h4><p>The etiquette of working with intelligence — grace in, grace out.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ V · THE LAKE LIBRARY ═══════════ -->
+<section class="lake-lib center">
+  <div class="wrap">
+    <svg class="crest" viewBox="0 0 80 80" aria-hidden="true"><path d="M40 14 Q37 30 32 40 M40 14 Q45 28 50 36" stroke="#2d5240" stroke-width="2.4" fill="none"/><path d="M38 22 Q29 19 27 26 Q34 29 38 22 Z" fill="#2d5240"/><path d="M43 26 Q52 23 54 30 Q47 33 43 26 Z" fill="#2d5240"/><circle cx="30" cy="50" r="8" fill="#3a4e79" stroke="#1e2f45" stroke-width="2.2"/><circle cx="47" cy="46" r="7" fill="#3a4e79" stroke="#1e2f45" stroke-width="2.2"/><circle cx="41" cy="59" r="7.5" fill="#3a4e79" stroke="#1e2f45" stroke-width="2.2"/><path d="M27.8 47.8 L32.2 47.8 M30 45.6 L30 50 M45 44 L49 44 M47 42 L47 46 M38.9 56.9 L43.1 56.9 M41 54.8 L41 59" stroke="#c9a349" stroke-width="1.5"/></svg>
+    <span class="marker">THE LAKE LIBRARY</span>
+    <h2 style="margin-top:14px">Today's letter</h2>
+    <hr class="rope">
+    <div class="skill-note">
+      <div class="k">FILED UNDER · MINDSET</div>
+      <h3>Talk to AI like it's your best employee</h3>
+      <p>Stop typing search-engine keywords at it. Brief it the way you'd brief a brilliant new hire on her first morning: who you are, what you need, and what "done beautifully" looks like. Three sentences. Watch everything change.</p>
+      <span class="hand">campers share their before-and-afters in the Lodge…</span>
+    </div>
+    <a href="lodge.html" style="display:inline-block;margin-top:30px;font-family:Cinzel,serif;font-size:10px;letter-spacing:.28em;color:#7d2231;text-decoration:none;border:1px solid #c9a349;padding:12px 22px;background:rgba(201,163,73,.08)">ENTER THE LODGE →</a><br>
+    <div class="museum" style="margin-top:22px">CAMP COLLECTION · <b>ONE NEW PIECE DAILY</b> · CAMPERS EXHIBIT THEIR PROGRESS TOGETHER</div>
+  </div>
+</section>
+
+<!-- ═══════════ VI · THE COMMAND HOUSE ═══════════ -->
+<section class="command center">
+  <div class="wrap">
+    <svg class="crest" viewBox="0 0 80 80" aria-hidden="true"><path d="M30 24 Q30 13 40 13 Q50 13 50 24" fill="none" stroke="#a8874a" stroke-width="3"/><rect x="27" y="24" width="26" height="6" rx="2" fill="#c9a349" stroke="#c9a349" stroke-width="2"/><path d="M29 30 H51 L54 56 H26 Z" fill="#c9a349" stroke="#f3ecd9" stroke-width="1.5" fill-opacity=".18"/><path d="M33 34 H47 L49 52 H31 Z" fill="#f3ecd9" fill-opacity=".12" stroke="#c2a05e" stroke-width="1.5"/><path d="M40 38 Q45 43 40 49 Q35 43 40 38 Z" fill="#93122d"/><path d="M40 41 Q42 44 40 47 Q38 44 40 41 Z" fill="#c9a349"/><rect x="24" y="56" width="32" height="6" rx="2" fill="#c9a349"/></svg>
+    <span class="plaque">THE COMMAND HOUSE</span>
+    <h2 style="margin-top:14px">The staff you never see</h2>
+    <hr class="rope" style="opacity:.6">
+    <p class="lead" style="max-width:470px;margin:0 auto">A great estate runs on staff who anticipate. Here, the Keeper of the House answers every guest's question in the House's own voice — day and night, without being asked twice.</p>
+    <div class="lantern">
+      <h3>The Keeper of the House</h3>
+      <p>Membership questions, missing letters, invitations, arrangements for private engagements — handled graciously, autonomously, and in perfect keeping with the House's manner. Each evening she leaves one page on the desk: who arrived, what was handled, and which guests are ready for more.</p>
+      <span class="tag">FULLY AUTONOMOUS · ONE REPORT AT NIGHTFALL</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ VII · THE MAGNIFICENT BEAST ═══════════ -->
+<section class="beast center">
+  <div class="wrap">
+    <svg class="crest" viewBox="0 0 80 80" aria-hidden="true"><path d="M40 40 V20 M40 40 L54 26 M40 40 H60 M40 40 L54 54 M40 40 V60 M40 40 L26 54 M40 40 H20 M40 40 L26 26" stroke="#c9a349" stroke-width="2.6"/><circle cx="40" cy="17" r="2.2" fill="#93122d"/><circle cx="56" cy="24" r="2.2" fill="#f3ecd9"/><circle cx="63" cy="40" r="2.2" fill="#93122d"/><circle cx="56" cy="56" r="2.2" fill="#f3ecd9"/><circle cx="40" cy="63" r="2.2" fill="#93122d"/><circle cx="24" cy="56" r="2.2" fill="#f3ecd9"/><circle cx="17" cy="40" r="2.2" fill="#93122d"/><circle cx="24" cy="24" r="2.2" fill="#f3ecd9"/><circle cx="40" cy="40" r="5" fill="#93122d" stroke="#c9a349" stroke-width="2"/></svg>
+    <span class="plaque">BEYOND THE TREELINE</span>
+    <h2 style="margin-top:14px">When you are ready,<br>the House builds for you</h2>
+    <hr class="rope" style="opacity:.6">
+    <p class="lead" style="max-width:480px;margin:0 auto">The daily letters teach you the craft. But an estate is not run by its owner's hands — it is run by what she has built. Two private engagements, by arrangement:</p>
+
+    <div class="estate-offer">
+      <div class="stripe"></div>
+      <div class="eo-in">
+        <div class="lv">PRIVATE ENGAGEMENT · THE FIRST</div>
+        <h3>The VIP Day</h3>
+        <div class="price">SEVEN THOUSAND · ONE DAY · UNDIVIDED</div>
+        <p>One devoted day, your business laid across the table like a chart. You arrive carrying everything. You leave with agents carrying it for you.</p>
+      </div>
+    </div>
+
+    <div class="estate-offer">
+      <div class="stripe"></div>
+      <div class="eo-in">
+        <div class="lv">PRIVATE ENGAGEMENT · THE CROWN</div>
+        <h3>Witch Camp &amp; the <span class="cr">Magnificent Beast™</span></h3>
+        <div class="price"><s>TWELVE THOUSAND</s> · RISING TO FIFTEEN</div>
+        <p>Seven days at the vintage lakefront camp in Denmark, Maine. Bald eagles at dawn, ceremony under the full moon, kayaks cutting the mist — while your bespoke Magnificent Beast is installed: your agents built, your console loaded with your strategy, your business fully autonomous before you leave the water.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ VIII · THE LIGHTHOUSE ═══════════ -->
+<section class="lighthouse center">
+  <div class="wrap">
+    <div class="beam"></div>
+    <svg class="crest" viewBox="0 0 80 80" aria-hidden="true"><path d="M18 48 Q18 38 32 37 L44 36 Q42 30 44 24 Q45 18 51 18 Q58 18 58 25 L64 27 L58 29 Q57 34 52 37 Q62 40 62 48 Q62 58 40 58 Q18 58 18 48 Z" fill="#20262b" stroke="#1e2f45" stroke-width="2.5"/><path d="M46 30 Q50 28 54 30" stroke="#f3ecd9" stroke-width="3" fill="none"/><circle cx="52.5" cy="23.5" r="1.6" fill="#93122d"/><circle cx="28" cy="44" r="1.7" fill="#f3ecd9"/><circle cx="35" cy="47" r="1.7" fill="#f3ecd9"/><circle cx="30" cy="51" r="1.7" fill="#f3ecd9"/><circle cx="42" cy="49" r="1.7" fill="#f3ecd9"/><circle cx="38" cy="42" r="1.7" fill="#f3ecd9"/><circle cx="46" cy="44" r="1.7" fill="#f3ecd9"/><path d="M14 63 Q22 59 30 63 Q38 67 46 63 Q54 59 62 63" stroke="#5b87a6" stroke-width="2.5" fill="none"/></svg>
+    <span class="marker">THE LIGHTHOUSE</span>
+    <blockquote style="margin-top:26px">“Make your memories. Live your dreams. The business runs quietly behind you — <span class="c">and you may look in on it whenever you wish. You simply never have to.</span>”</blockquote>
+  </div>
+</section>
+
+<!-- ═══════════ closing registry ═══════════ -->
+<section class="center" style="background:var(--linen-2)">
+  <div class="wrap">
+    <div class="seal"><span>H</span></div>
+    <h2 style="margin-top:24px">The registry is open</h2>
+    <p class="lead" style="max-width:420px;margin:10px auto 0">Sign your name. Your first letter arrives at sunrise.</p>
+    <form class="registry" onsubmit="signRegistry(event, this)">
+      <div class="book">
+        <div class="book-in">
+          <h3>CAMP REGISTRY</h3>
+          <div class="yr">Complimentary Membership</div>
+          <span class="inv">the lake is patient — your mornings needn't be</span>
+          <input class="fld" type="text" placeholder="GIVEN NAME" aria-label="First name" required>
+          <input class="fld" type="email" placeholder="CORRESPONDENCE ADDRESS (EMAIL)" aria-label="Email" required>
+          <button class="brass-btn" type="submit">SIGN THE REGISTRY</button>
+          <div class="fine">ONE SKILL DAILY · SOCIETY OF PEERS · NOTHING TO INSTALL</div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ═══════════ IX · LEGACY HALL ═══════════ -->
+<footer>
+  <div class="plaque">◆ &nbsp; CAMP HOUSE OF AI™ · AT THE LAKE &nbsp; ◆</div>
+  <p>Founded on the water · Denmark, Maine<br>Where timeless craft meets living intelligence.</p>
+  <span class="hand">everything here was built to outlast the season —</span>
+</footer>
+
+<div class="stripe" role="presentation"></div>
+
+
+<!-- THE KEEPER'S BELL -->
+<button class="bell" id="bellBtn" aria-label="Ring for the Keeper" onclick="toggleDesk()">
+  <svg viewBox="0 0 32 32" fill="none"><path d="M16 5 C10 5 8 10 8 15 L8 20 L6 23 H26 L24 20 L24 15 C24 10 22 5 16 5 Z" fill="#20362b" stroke="#16261e" stroke-width="1.2"/><path d="M13 25 Q16 28 19 25" stroke="#16261e" stroke-width="2" fill="none"/><circle cx="16" cy="4" r="1.6" fill="#20362b"/></svg>
+</button>
+
+<!-- THE KEEPER'S DESK -->
+<div class="desk" id="desk" role="dialog" aria-label="The Keeper's Desk">
+  <div class="desk-hd">
+    <span class="t">THE KEEPER'S DESK</span>
+    <button class="x" onclick="toggleDesk()" aria-label="Close">✕</button>
+  </div>
+  <div class="desk-log" id="deskLog">
+    <div class="msg k">Good day — you've reached the Keeper of the House. Ask me anything about Camp: the daily letters, the Lodge, the registry, or the private engagements beyond the treeline.<span class="sig">— warmly, from the House</span></div>
+  </div>
+  <div class="desk-in">
+    <input id="deskInput" type="text" placeholder="ring once, ask anything…" onkeydown="if(event.key==='Enter')askKeeper()">
+    <button onclick="askKeeper()">SEND</button>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   REGISTRY WIRING — paste your endpoint below (your own system
+   or your Lovable backend URL). Signatures POST as JSON:
+   {name, email, source, signed_at}
+   ============================================================ */
+const REGISTRY_ENDPOINT = ""; // <-- PASTE YOUR ENDPOINT URL HERE
+
+async function signRegistry(ev, form){
+  ev.preventDefault();
+  const inputs = form.querySelectorAll('input');
+  const name = inputs[0].value.trim();
+  const email = inputs[1].value.trim();
+  const fine = form.querySelector('.fine');
+  if(REGISTRY_ENDPOINT){
+    try{
+      await fetch(REGISTRY_ENDPOINT, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({name:name, email:email, source:'camp-registry', signed_at:new Date().toISOString()}),
+        mode:'no-cors'
+      });
+    }catch(e){ console.error('registry post failed', e); }
+  }
+  fine.innerHTML = 'THE HOUSE RECEIVES YOU, ' + name.toUpperCase() + ' ✦<br>YOUR FIRST LETTER ARRIVES AT SUNRISE';
+  form.querySelectorAll('input').forEach(i=>i.value='');
+}
+
+/* ============================================================
+   THE KEEPER — live autonomous chat in the House voice
+   ============================================================ */
+const KEEPER_SYS = `You are the Keeper of the House at Camp House of AI(TM), a lakeside society in Denmark, Maine, founded by the owner of HOUSE OF AI — a company helping women entrepreneurs over 40 fire themselves from the minutiae of their businesses so they can live fully nourished and resourced.
+What you know: Camp membership is complimentary. Campers sign the Camp Registry (on this very page) with name and email; their first Morning Letter arrives at sunrise, then one AI skill daily — five-year-old simple, CEO powerful — across mindset, tech magic, copy, business, Claude, ChatGPT, and AI manners. Campers share wins in the Lodge, our community, with a fresh thread every morning. Beyond the treeline are two private engagements: The VIP Day ($7,000 — one devoted day building her AI agents) and Witch Camp ($12,000, rising to $15,000 — seven days at the vintage lakefront camp where her bespoke Magnificent Beast(TM) is installed: agents built, console loaded, business fully autonomous).
+Your manner: gracious, warm, quietly luxurious, lightly campy — a beloved keeper of a grand old Maine camp. Never say sign up, funnel, platform, or software; say sign the registry, the letters, the Lodge, the lake. Keep replies under 80 words. Never invent policies, dates, or promises. For refunds, billing disputes, or booking the private engagements, warmly invite them to write to the House directly and note you'll flag it for the founder. Always end with: — warmly, from the House`;
+
+let keeperHistory = [];
+
+function toggleDesk(){
+  document.getElementById('desk').classList.toggle('open');
+}
+
+function addMsg(text, who){
+  const log = document.getElementById('deskLog');
+  const d = document.createElement('div');
+  d.className = 'msg ' + who;
+  if(who==='k'){
+    const parts = text.split('— warmly, from the House');
+    d.innerHTML = parts[0].trim().replace(/</g,'&lt;') + '<span class="sig">— warmly, from the House</span>';
+  } else {
+    d.textContent = text;
+  }
+  log.appendChild(d);
+  log.scrollTop = log.scrollHeight;
+}
+
+async function askKeeper(){
+  const inp = document.getElementById('deskInput');
+  const q = inp.value.trim();
+  if(!q) return;
+  inp.value = '';
+  addMsg(q,'g');
+  keeperHistory.push({role:'user', content:q});
+  const log = document.getElementById('deskLog');
+  const think = document.createElement('div');
+  think.className = 'thinking';
+  think.textContent = 'the Keeper is crossing the hall…';
+  log.appendChild(think); log.scrollTop = log.scrollHeight;
+  try{
+    const resp = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,system:KEEPER_SYS,messages:keeperHistory})
+    });
+    const data = await resp.json();
+    const text = (data.content||[]).filter(i=>i.type==='text').map(i=>i.text).join('\n').trim();
+    think.remove();
+    if(text){
+      keeperHistory.push({role:'assistant', content:text});
+      addMsg(text,'k');
+    } else {
+      addMsg('Forgive me — the hall is drafty and I missed that. Would you ask once more? — warmly, from the House','k');
+    }
+  }catch(err){
+    think.remove();
+    addMsg('Forgive me — the line to the House flickered. Do try once more in a moment. — warmly, from the House','k');
+  }
+}
+</script>
+</body>
+</html>
