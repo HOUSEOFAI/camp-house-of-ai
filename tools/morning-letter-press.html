@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Camp House of AI™ — The Morning Letter Press</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Cinzel:wght@400;500;600&family=La+Belle+Aurore&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --linen:#f6f1e6; --paper:#fbf7ec; --edge:#d8cdb0;
+    --navy:#1e2f45; --pine:#20362b; --hunter:#1f3d2e;
+    --cran:#93122d; --gold:#c9a349; --brass:#a8874a;
+    --camel:#c89a5b; --lake:#5b87a6; --ink:#26302a; --soft:#4d5a51;
+  }
+  body{background:var(--linen);color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:18px;line-height:1.7;
+    background-image:radial-gradient(rgba(32,54,43,.025) 1px, transparent 1px);background-size:5px 5px}
+  .stripe{height:14px;background:linear-gradient(90deg,
+    var(--navy) 0 18%, var(--linen) 18% 21%, var(--cran) 21% 34%, var(--linen) 34% 36%,
+    var(--gold) 36% 44%, var(--linen) 44% 46%, var(--hunter) 46% 62%, var(--linen) 62% 64%,
+    var(--lake) 64% 76%, var(--linen) 76% 78%, var(--cran) 78% 88%, var(--linen) 88% 90%, var(--navy) 90% 100%)}
+  .wrap{max-width:620px;margin:0 auto;padding:0 22px}
+  header{text-align:center;padding:46px 22px 12px}
+  .plaque{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.4em;color:var(--brass)}
+  h1{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:clamp(32px,8vw,46px);color:var(--pine);line-height:1.1;margin:12px 0 6px}
+  .script{font-family:'La Belle Aurore',cursive;font-size:clamp(19px,4.8vw,24px);color:var(--cran)}
+  .note{max-width:430px;margin:14px auto 0;font-style:italic;font-size:17px;color:var(--soft)}
+
+  .press{margin:30px auto 0;background:var(--paper);border:1px solid var(--edge);box-shadow:0 16px 40px rgba(32,54,43,.16);padding:28px 24px;text-align:center}
+  .dial{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:4px 0 18px}
+  .chip{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.18em;padding:8px 12px;border:1px solid var(--edge);background:var(--linen);color:var(--soft);cursor:pointer;transition:.2s}
+  .chip.on{background:var(--pine);color:var(--linen);border-color:var(--pine)}
+  .counter{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.24em;color:var(--navy);margin-bottom:16px}
+  .counter b{color:var(--cran)}
+  .brass-btn{display:block;width:100%;padding:17px;cursor:pointer;
+    font-family:'Cinzel',serif;font-size:12px;letter-spacing:.26em;color:#2b2010;border:1px solid #8a6c38;
+    background:linear-gradient(180deg,#d4b573,#a8874a 55%,#8f7038);
+    box-shadow:0 4px 10px rgba(90,61,40,.35), inset 0 1px 0 rgba(255,255,255,.45);transition:filter .25s}
+  .brass-btn:hover{filter:brightness(1.06)}
+  .brass-btn:disabled{opacity:.55;cursor:wait}
+  .status{font-family:'La Belle Aurore',cursive;font-size:19px;color:var(--lake);margin-top:14px;min-height:26px}
+
+  .letter{margin:34px 0 0;background:var(--paper);border:1px solid var(--edge);border-top:5px solid var(--cran);
+    box-shadow:0 18px 44px rgba(32,54,43,.18);padding:34px 28px;position:relative;display:none}
+  .letter.show{display:block}
+  .letter .no-stamp{position:absolute;top:-15px;right:20px;background:var(--navy);color:var(--linen);
+    font-family:'Cinzel',serif;font-size:10px;letter-spacing:.2em;padding:6px 14px;box-shadow:0 3px 8px rgba(21,34,51,.35)}
+  .letter .k{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.3em;color:var(--brass)}
+  .letter h2{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:27px;color:var(--pine);margin:8px 0 14px;line-height:1.2}
+  .seg{margin-top:18px}
+  .seg .sk{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.26em;color:var(--navy);display:block;margin-bottom:5px}
+  .seg p{font-size:17.5px;color:var(--ink)}
+  .seg.drill{background:rgba(91,135,166,.08);border-left:3px solid var(--lake);padding:14px 16px;margin-top:22px}
+  .hand{font-family:'La Belle Aurore',cursive;font-size:20px;color:var(--cran);display:block;margin-top:20px}
+
+  .copies{margin-top:26px;display:grid;gap:10px}
+  .copy-btn{font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.22em;padding:13px;cursor:pointer;
+    background:var(--linen);border:1px solid var(--edge);color:var(--pine);transition:.2s;text-align:center}
+  .copy-btn:hover{background:var(--pine);color:var(--linen)}
+
+  .archive{margin:44px 0 60px}
+  .archive h3{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.34em;color:var(--brass);text-align:center;margin-bottom:16px}
+  .arc-item{background:var(--paper);border:1px solid var(--edge);padding:14px 18px;margin-bottom:8px;display:flex;gap:14px;align-items:baseline;cursor:pointer;transition:.2s}
+  .arc-item:hover{border-color:var(--brass)}
+  .arc-item .n{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.14em;color:var(--cran);white-space:nowrap}
+  .arc-item .t{font-family:'Playfair Display',serif;font-style:italic;font-size:17px;color:var(--pine)}
+  .empty{text-align:center;font-style:italic;color:var(--soft);font-size:16px}
+</style>
+</head>
+<body>
+
+<div class="stripe"></div>
+
+<header>
+  <div class="plaque">CAMP HOUSE OF AI™ · THE MACHINERY</div>
+  <h1>The Morning<br>Letter Press</h1>
+  <div class="script">pull the lever — a fresh skill, every day, forever</div>
+  <p class="note">The Press writes each Skill № in the Camp's own voice: five-year-old simple, CEO powerful, never repeating itself.</p>
+</header>
+
+<div class="wrap">
+
+  <div class="press">
+    <div class="counter">NEXT LETTER · <b id="nextNo">№ 001</b></div>
+    <div class="dial" id="dial"></div>
+    <button class="brass-btn" id="printBtn" onclick="printLetter()">PULL THE LEVER · PRINT TODAY'S LETTER</button>
+    <div class="status" id="status"></div>
+  </div>
+
+  <div class="letter" id="letter">
+    <div class="no-stamp" id="stamp">№ 001</div>
+    <div class="k" id="cat">FILED UNDER · MINDSET</div>
+    <h2 id="title"></h2>
+    <div class="seg"><span class="sk">THE FIVE-YEAR-OLD VERSION</span><p id="kid"></p></div>
+    <div class="seg"><span class="sk">THE CEO VERSION</span><p id="ceo"></p></div>
+    <div class="seg drill"><span class="sk">TODAY'S FIVE-MINUTE DRILL</span><p id="drill"></p></div>
+    <div class="seg"><span class="sk">SHARE IN THE LODGE</span><p id="lodge"></p></div>
+    <span class="hand" id="teaser"></span>
+    <div class="copies">
+      <button class="copy-btn" onclick="copyFmt('email')">COPY AS MORNING LETTER (EMAIL)</button>
+      <button class="copy-btn" onclick="copyFmt('ig')">COPY AS IG CAPTION</button>
+      <button class="copy-btn" onclick="copyFmt('lodge')">COPY AS DAILY LODGE THREAD</button>
+    </div>
+  </div>
+
+  <div class="archive">
+    <h3>— THE LETTER ARCHIVE —</h3>
+    <p id="storageNote" style="display:none;text-align:center;font-style:italic;font-size:15px;color:#93122d;margin-bottom:12px">a note from the House: this room can't save between visits today — your letters live for this session. Copy the ones you love below.</p>
+    <button class="copy-btn" style="width:100%;margin-bottom:14px" onclick="exportArchive()">COPY ENTIRE ARCHIVE · SAFEKEEPING</button>
+    <div id="arcList"><p class="empty">No letters printed yet. Pull the lever.</p></div>
+  </div>
+
+</div>
+
+<div class="stripe"></div>
+
+<script>
+const CATS = ["MINDSET","TECH MAGIC","COPY","BUSINESS","CLAUDE","CHATGPT","AI MANNERS"];
+let selectedCat = null; // null = rotate automatically
+let archive = [];
+let current = null;
+let storageOk = true;
+
+function showStorageNote(){
+  const el = document.getElementById('storageNote');
+  if(el) el.style.display = 'block';
+}
+
+function exportArchive(){
+  if(!archive.length) return;
+  const out = archive.map(s=>{
+    const n = 'Skill № ' + String(s.no).padStart(3,'0');
+    return `${n} · ${s.cat}\n${s.title}\n\nFive-year-old version: ${s.kid}\n\nCEO version: ${s.ceo}\n\nDrill: ${s.drill}\n\n${s.lodge}\n\n${s.teaser}`;
+  }).join('\n\n————————————\n\n');
+  navigator.clipboard.writeText(out).then(()=>{
+    document.getElementById('status').textContent = 'entire archive copied — paste it somewhere safe.';
+  }).catch(()=>{ document.getElementById('status').textContent = 'copy blocked — long-press the letters instead.'; });
+}
+
+// build category dial
+const dial = document.getElementById('dial');
+const autoChip = document.createElement('button');
+autoChip.className = 'chip on'; autoChip.textContent = 'ROTATE (AUTO)';
+autoChip.onclick = () => { selectedCat = null; setChips(autoChip); };
+dial.appendChild(autoChip);
+CATS.forEach(c => {
+  const b = document.createElement('button');
+  b.className = 'chip'; b.textContent = c;
+  b.onclick = () => { selectedCat = c; setChips(b); };
+  dial.appendChild(b);
+});
+function setChips(active){ dial.querySelectorAll('.chip').forEach(x=>x.classList.remove('on')); active.classList.add('on'); }
+
+async function loadArchive(){
+  try{
+    const r = await window.storage.get('letter-archive');
+    if(r && r.value) archive = JSON.parse(r.value);
+  }catch(e){ archive = []; }
+  renderArchive();
+  document.getElementById('nextNo').textContent = '№ ' + String(archive.length+1).padStart(3,'0');
+}
+
+function renderArchive(){
+  const el = document.getElementById('arcList');
+  if(!archive.length){ el.innerHTML = '<p class="empty">No letters printed yet. Pull the lever.</p>'; return; }
+  el.innerHTML = '';
+  [...archive].reverse().forEach((a)=>{
+    const d = document.createElement('div');
+    d.className = 'arc-item';
+    d.innerHTML = `<span class="n">№ ${String(a.no).padStart(3,'0')}</span><span class="t">${a.title}</span>`;
+    d.onclick = ()=> showLetter(a);
+    el.appendChild(d);
+  });
+}
+
+async function printLetter(){
+  const btn = document.getElementById('printBtn');
+  const status = document.getElementById('status');
+  btn.disabled = true;
+  status.textContent = 'the press is warming… ink, brass, patience…';
+
+  const no = archive.length + 1;
+  const cat = selectedCat || CATS[(no-1) % CATS.length];
+  const pastTitles = archive.map(a=>a.title).join('; ') || 'none yet';
+
+  const sys = `You write the daily Morning Letter for Camp House of AI™ — a lakeside society in Denmark, Maine that teaches women entrepreneurs over 40 one AI skill per day so they can fire themselves as the bottleneck. Voice: quiet luxury, warm, lakeside, inherited — never SaaS, never hype, never jargon. Every skill must pass one filter: a five-year-old could follow it, a CEO would frame it. Respond ONLY with valid JSON, no markdown fences, no preamble.`;
+
+  const usr = `Write Skill № ${String(no).padStart(3,'0')}, category: ${cat}.
+Already-written skill titles (never repeat or closely echo): ${pastTitles}.
+Return JSON exactly in this shape:
+{"title":"skill title, 4-8 words, elegant","kid":"the five-year-old version: 1-2 sentences, charming and simple","ceo":"the CEO version: 2-4 sentences of real substance — why this works and the sharp principle behind it","drill":"today's five-minute drill: concrete steps she does right now with Claude or ChatGPT, specific enough to act on immediately","lodge":"one line inviting her to share a specific result in the Lodge","teaser":"one handwritten-style teaser line for tomorrow's letter, lowercase, poetic","email_subject":"morning email subject line with the № included","ig_caption":"a 3-5 sentence IG caption in the Camp voice ending with: The registry is open — link in bio."}`;
+
+  try{
+    const resp = await fetch("https://api.anthropic.com/v1/messages",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({model:"claude-sonnet-4-6",max_tokens:1000,system:sys,messages:[{role:"user",content:usr}]})
+    });
+    const data = await resp.json();
+    const text = (data.content||[]).filter(i=>i.type==="text").map(i=>i.text).join("\n");
+    const clean = text.replace(/```json|```/g,"").trim();
+    const skill = JSON.parse(clean);
+    skill.no = no; skill.cat = cat;
+    archive.push(skill);
+    current = skill;
+    try{ await window.storage.set('letter-archive', JSON.stringify(archive)); storageOk = true; }
+    catch(e){ storageOk = false; showStorageNote(); }
+    showLetter(skill);
+    renderArchive();
+    document.getElementById('nextNo').textContent = '№ ' + String(archive.length+1).padStart(3,'0');
+    status.textContent = 'hot off the press — sunrise delivery, ready.';
+  }catch(err){
+    console.error(err);
+    status.textContent = 'the press jammed — pull the lever once more.';
+  }
+  btn.disabled = false;
+}
+
+function showLetter(s){
+  current = s;
+  document.getElementById('stamp').textContent = '№ ' + String(s.no).padStart(3,'0');
+  document.getElementById('cat').textContent = 'FILED UNDER · ' + s.cat;
+  document.getElementById('title').textContent = s.title;
+  document.getElementById('kid').textContent = s.kid;
+  document.getElementById('ceo').textContent = s.ceo;
+  document.getElementById('drill').textContent = s.drill;
+  document.getElementById('lodge').textContent = s.lodge;
+  document.getElementById('teaser').textContent = s.teaser;
+  const el = document.getElementById('letter');
+  el.classList.add('show');
+  el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function copyFmt(kind){
+  if(!current) return;
+  const n = 'Skill № ' + String(current.no).padStart(3,'0');
+  let out = '';
+  if(kind==='email'){
+    out = `Subject: ${current.email_subject}\n\n${n} · ${current.cat}\n${current.title}\n\nThe five-year-old version: ${current.kid}\n\nThe CEO version: ${current.ceo}\n\nToday's five-minute drill: ${current.drill}\n\n${current.lodge}\n\n${current.teaser}\n\n— the House`;
+  } else if(kind==='ig'){
+    out = `${n} — ${current.title}\n\n${current.ig_caption}`;
+  } else {
+    const today = new Date().toLocaleDateString('en-US',{weekday:'long', month:'long', day:'numeric'});
+    out = `🕯️ TODAY'S LETTER · ${n} — ${current.title}\n${today} · Filed under ${current.cat}\n\nGood morning, campers.\n\nThe five-year-old version: ${current.kid}\n\nThe CEO version: ${current.ceo}\n\n☕ TODAY'S FIVE-MINUTE DRILL:\n${current.drill}\n\n${current.lodge}\nDrop your result in the comments below 👇 — before-and-afters earn extra applause.\n\n(New letter, new thread, every sunrise. Yesterday's thread is now part of the archive — the Camp only moves forward.)\n\n— the House\n\n————\nFIRST COMMENT (pin this):\nI'll go first — post your drill result as a reply to this comment. One line is plenty. Done beats perfect at this Camp. 🛶`;
+  }
+  navigator.clipboard.writeText(out).then(()=>{
+    document.getElementById('status').textContent = 'copied — take it to the dock.';
+  }).catch(()=>{ document.getElementById('status').textContent = 'copy blocked — long-press the text instead.'; });
+}
+
+loadArchive();
+</script>
+
+</body>
+</html>
