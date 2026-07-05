@@ -216,7 +216,8 @@ async function postWin(ev, form){
       await fetch(LODGE_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload), mode:'no-cors'});
     }catch(e){ console.error('lodge post failed', e); }
   }
-  form.querySelector('.fine').innerHTML = 'HUNG ON THE WALL, ' + payload.name.toUpperCase() + ' ✦<br>THE HOUSE READS EVERY WIN AT NIGHTFALL';
+  const letter = 'mailto:lisa@houseofai.boston?subject=' + encodeURIComponent('LODGE LOGBOOK — ' + payload.name + ' · Skill № ' + payload.skill_no) + '&body=' + encodeURIComponent(payload.win + '\n\n— ' + payload.name + ', posted from the Lodge');
+  form.querySelector('.fine').innerHTML = 'HUNG ON THE WALL, ' + payload.name.toUpperCase() + ' ✦<br><a href="' + letter + '" style="color:#93122d;font-weight:600">TAP TO POST IT TO THE HOUSE →</a><br>THE HOUSE READS EVERY WIN AT NIGHTFALL';
   f.forEach(i=>i.value='');
 }
 </script>
