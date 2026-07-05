@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Merit Wall — Camp House of AI™</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Cinzel:wght@400;500;600&family=La+Belle+Aurore&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--linen:#f6f1e6;--paper:#fbf7ec;--edge:#d8cdb0;--navy:#1e2f45;--pine:#20362b;--pine-d:#16261e;--hunter:#1f3d2e;--cran:#93122d;--gold:#c9a349;--brass:#a8874a;--brass-2:#c2a05e;--lake:#5b87a6;--ink:#26302a;--soft:#4d5a51}
+  body{background:var(--linen);color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:18px;line-height:1.65;background-image:radial-gradient(rgba(32,54,43,.025) 1px, transparent 1px);background-size:5px 5px}
+  .stripe{height:14px;background:linear-gradient(90deg,var(--navy) 0 18%,var(--linen) 18% 21%,var(--cran) 21% 34%,var(--linen) 34% 36%,var(--gold) 36% 44%,var(--linen) 44% 46%,var(--hunter) 46% 62%,var(--linen) 62% 64%,var(--lake) 64% 76%,var(--linen) 76% 78%,var(--cran) 78% 88%,var(--linen) 88% 90%,var(--navy) 90% 100%)}
+  header{text-align:center;padding:50px 22px 20px}
+  .plaque{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.4em;color:var(--brass)}
+  h1{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:clamp(36px,9vw,56px);color:var(--pine);line-height:1.05;margin:14px 0 8px}
+  .script{font-family:'La Belle Aurore',cursive;font-size:clamp(19px,4.8vw,25px);color:var(--cran)}
+  .note{max-width:450px;margin:16px auto 0;font-style:italic;font-size:17.5px;color:var(--soft)}
+  .wrap{max-width:640px;margin:0 auto;padding:0 20px}
+  .wall{position:relative;padding:28px 0 60px}
+  .honor{display:grid;grid-template-columns:104px 1fr;gap:18px;align-items:center;background:var(--paper);border:1px solid var(--edge);box-shadow:0 8px 22px rgba(32,54,43,.12);padding:18px 20px;margin-bottom:16px}
+  .honor:nth-child(odd){transform:rotate(.4deg)}
+  .honor:nth-child(even){transform:rotate(-.4deg)}
+  .badge{width:96px;height:96px;border-radius:50%;background:#f3ecd9;border:4px solid var(--navy);box-shadow:0 6px 14px rgba(30,47,69,.2), inset 0 0 0 2.5px #f3ecd9, inset 0 0 0 4px var(--gold);display:flex;align-items:center;justify-content:center;flex:none}
+  .badge svg{width:66%;height:66%}
+  .h-in .no{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.24em;color:var(--brass)}
+  .h-in h3{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:21px;color:var(--pine);margin:2px 0}
+  .h-in .req{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.14em;color:var(--navy);line-height:1.9}
+  .h-in .hand{font-family:'La Belle Aurore',cursive;font-size:17px;color:var(--cran)}
+  .ceremony{background:linear-gradient(180deg,var(--pine),var(--pine-d));color:#e9e2cf;text-align:center;padding:56px 22px}
+  .ceremony h2{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:clamp(26px,6.4vw,34px);color:#f2ecd9;margin:12px 0 14px}
+  .ceremony .plaque{color:var(--brass-2)}
+  .ceremony p{max-width:460px;margin:0 auto;font-size:17.5px;color:#c9d1bd;font-style:italic}
+  footer{background:var(--pine-d);color:#a7b0a0;text-align:center;padding:40px 22px 52px}
+  footer .plaque{color:var(--brass-2)}
+  footer p{font-style:italic;font-size:16px;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="stripe"></div>
+<header>
+  <div class="plaque">CAMP HOUSE OF AI™ · HONORS & DISTINCTIONS</div>
+  <h1>The Merit Wall</h1>
+  <div class="script">sixteen honors, earned one sunrise at a time</div>
+  <div style="margin-top:18px"><a href="index.html" style="font-family:Cinzel,serif;font-size:9px;letter-spacing:.26em;color:#7d2231;text-decoration:none;border:1px dashed #c9a349;padding:8px 14px;margin:0 4px">← THE DOCK</a><a href="lodge.html" style="font-family:Cinzel,serif;font-size:9px;letter-spacing:.26em;color:#7d2231;text-decoration:none;border:1px dashed #c9a349;padding:8px 14px;margin:0 4px">THE LODGE →</a></div>
+  <p class="note">Patches are not given at this Camp. They are earned — by streaks, by wins hung in the Logbook, by tasks fired and days taken off. The House keeps the ledger.</p>
+</header>
+<div class="wrap"><div class="wall">
+    <div class="honor">
+      <div class="badge"><svg viewBox="0 0 80 80">
+        <path d="M16 32 Q16 25 24 25 H56 Q64 25 64 32 L61 56 Q60 63 52 63 H28 Q20 63 19 56 Z" fill="#c89a5b" stroke="#1e2f45" stroke-width="2.5"/>
+        <path d="M17 36 H63 M18 43 H62 M18.5 50 H61.5 M19.5 57 H60.5" stroke="#a67a3e" stroke-width="2" fill="none"/>
+        <path d="M22 25 Q22 14 40 14 Q58 14 58 25" fill="#d9b078" stroke="#1e2f45" stroke-width="2.5"/>
+        <path d="M28 21 H52" stroke="#a67a3e" stroke-width="1.8"/>
+        <rect x="36" y="20" width="8" height="18" rx="2" fill="#93122d" stroke="#1e2f45" stroke-width="2"/>
+        <rect x="36.5" y="28" width="7" height="5" fill="none" stroke="#c9a349" stroke-width="2"/>
+      </svg></div>
+      <div class="h-in">
+        <div class="no">HONOR 01</div>
+        <h3>The Creel</h3>
+        <div class="req">FIRST CATCH — completed Skill № 001</div>
+        <span class="hand">every great angler remembers her first</span>
+      </div>
+    </div>
+    <div class="honor">
+      <div class="badge"><svg viewBox="0 0 80 80">
+        <path d="M24 14 H58 V60 H24 Z" fill="#f3ecd9" stroke="#1e2f45" stroke-width="2.5"/>
+        <path d="M24 14 Q17 14 17 20 V26 H24" fill="#e6dcc2" stroke="#1e2f45" stroke-width="2.5"/>
+        <rect x="24" y="22" width="34" height="7" fill="#1e2f45"/>
+        <rect x="24" y="33" width="34" height="4" fill="#93122d"/>
+        <rect x="24" y="45" width="34" height="7" fill="#1e2f45"/>
+        <path d="M27 60 V66 M33 60 V66 M39 60 V66 M45 60 V66 M51 60 V66 M57 60 V66" stroke="#c89a5b" stroke-width="2"/>
+      </svg></div>
+      <div class="h-in">
+        <div class="no">HONOR 02</div>
+        <h3>The Dock Towel</h3>
+        <div class="req">SEVEN SUNRISES — a full week of letters</div>
+        <span class="hand">you showed up seven mornings straight</span>
+      </div>
+    </div>
+    <div class="honor">
+      <div class="badge"><svg viewBox="0 0 80 80">
+        <path d="M40 66 V38" stroke="#c89a5b" stroke-width="3.5"/>
+        <path d="M40 28 V14 M40 28 L52 17 M40 28 L61 28 M40 28 L52 39 M40 28 L28 39 M40 28 L19 28 M40 28 L28 17" stroke="#c9a349" stroke-width="2.8" fill="none"/>
+        <circle cx="40" cy="28" r="4.5" fill="#93122d" stroke="#1e2f45" stroke-width="2"/>
+        <circle cx="40" cy="11" r="2" fill="#93122d"/><circle cx="64" cy="28" r="2" fill="#93122d"/>
+        <circle cx="16" cy="28" r="2" fill="#93122d"/><circle cx="55" cy="14" r="1.6" fill="#c9a349"/>
+        <circle cx="25" cy="14" r="1.6" fill="#c9a349"/><circle cx="55" cy="42" r="1.6" fill="#c9a349"/><circle cx="25" cy="42" r="1.6" fill="#c9a349"/>
+      </svg></div>
+      <div class="h-in">
+        <div class="no">HONOR 03</div>
+        <h3>The Sparkler</h3>
+        <div class="req">FIRST LIGHT — first win hung in the Logbook</div>
+        <span class="hand">the wall remembers who posted first</span>
+      </div>
+    </div>
+    <div class="honor">
+      <div class="badge"><svg viewBox="0 0 80 80">
+        <path d="M8 38 Q12 52 26 54 H54 Q68 52 72 38 Q58 46 40 46 Q22 46 8 38 Z" fill="#93122d" stroke="#1e2f45" stroke-width="2.5"/>
+        <path d="M16 46 Q40 51 64 46" stroke="#6e0e22" stroke-width="2" fill="none"/>
+        <path d="M12 40 Q40 48 68 40" stroke="#f3ecd9" stroke-width="1.6" fill="none"/>
+        <path d="M52 12 L36 52" stroke="#c89a5b" stroke-width="3"/>
+        <path d="M50 8 Q56 8 56 14 Q56 21 50 21 Q45 21 45 14 Q45 8 50 8 Z" fill="#c89a5b" stroke="#1e2f45" stroke-width="2"/>
+        <path d="M14 62 Q22 58 30 62 M46 62 Q54 58 62 62" stroke="#5b87a6" stroke-width="2.5" fill="none"/>
+      </svg></div>
+      <div class="h-in">
+        <div class="no">HONOR 04</div>
+        <h3>The Red Canoe</h3>
+        <div class="req">FOURTEEN LETTERS — two weeks on the water</div>
+        <span class="hand">steady strokes, camper</span>
+      </div>
+    </div>
+    <div class="honor">
+      <div class="badge"><svg viewBox="0 0 80 80">
+        <path d="M18 48 Q18 38 32 37 L44 36 Q42 30 44 24 Q45 18 51 18 Q58 18 58 25 L64 27 L58 29 Q57 34 52 37 Q62 40 62 48 Q62 58 40 58 Q18 58 18 48 Z" fill="#20262b" stroke="#1e2f45" stroke-width="2.5"/>
+        <path d="M46 30 Q50 28 54 30" stroke="#f3ecd9" stroke-width="3" fill="none"/>
+        <circle cx="52.5" cy="23.5" r="1.6" fill="#93122d"/>
+        <circle cx="28" cy="44" r="1.7" fill="#f3ecd9"/><circle cx="35" cy="47" r="1.7" fill="#f3ecd9"/>
+        <circle cx="30" cy="51" r="1.7" fill="#f3ecd9"/><circle cx="42" cy="49" r="1.7" fill="#f3ecd9"/>
+        <circle cx="38" cy="42" r="1.7" fill="#f3ecd9"/><circle cx="46" cy="44" r="1.7" fill="#f3ecd9"/>
+        <path d="M14 63 Q22 59 30 63 Q38 67 46 63 Q54 59 62 63" stroke="#5b87a6" stroke-width="2.5" fill="none"/>
+      </svg></div>
+      <div class="h-in">
+        <div class="no">HONOR 05</div>
+        <h3>The Loon Decoy</h3>
+        <div class="req">FIRST TERMINATION — fired your first task</div>
+        <span class="hand">we had cake. we always have cake</span>
+      </div>
+    </div>
+    <div class="honor">
+      <div class="badge"><svg viewBox="0 0 80 80">
+        <path d="M30 24 Q30 13 40 13 Q50 13 50 24" fill="none" stroke="#a8874a" stroke-width="3"/>
+        <rect x="27" y="24" width="26" height="6" rx="2" fill="#1e2f45" stroke="#1e2f45" stroke-width="2"/>
+        <path d="M29 30 H51 L54 56 H26 Z" fill="#c9a349" stroke="#1e2f45" stroke-width="2.5"/>
+        <path d="M33 34 H47 L49 52 H31 Z" fill="#f3ecd9" stroke="#1e2f45" stroke-width="1.8"/>
+        <path d="M40 38 Q45 43 40 49 Q35 43 40 38 Z" fill="#93122d" stroke="#6e0e22" stroke-width="1.5"/>
+        <path d="M40 41 Q42 44 40 47 Q38 44 40 41 Z" fill="#c9a349"/>
+        <rect x="24" y="56" width="32" height="6" rx="2" fill="#1e2f45"/>
+      </svg></div>
+      <div class="h-in">
+        <div class="no">HONOR 06</div>
+        <h3>The Camp Lantern</h3>
+        <div class="req">TWENTY-ONE LETTERS — three weeks lit</div>
+        <span class="hand">the lantern stays lit for those who return</span>
+      </div>
+    </div>
+    <div class="honor">
+      <div class="badge"><svg viewBox="0 0 80 80">
+        <circle cx="40" cy="40" r="27" fill="#1e2f45"/>
+        <path d="M40 40 V20 M40 40 L54 26 M40 40 H60 M40 40 L54 54 M40 40 V60 M40 40 L26 54 M40 40 H20 M40 40 L26 26" stroke="#c9a349" stroke-width="2.6"/>
+        <circle cx="40" cy="17" r="2.2" fill="#93122d"/><circle cx="56" cy="24" r="2.2" fill="#f3ecd9"/>
+        <circle cx="63" cy="40" r="2.2" fill="#93122d"/><circle cx="56" cy="56" r="2.2" fill="#f3ecd9"/>
+        <circle cx="40" cy="63" r="2.2" fill="#93122d"/><circle cx="24" cy="56" r="2.2" fill="#f3ecd9"/>
+        <circle cx="17" cy="40" r="2.2" fill="#93122d"/><circle cx="24" cy="24" r="2.2" fill="#f3ecd9"/>
+        <circle cx="40" cy="40" r="5" fill="#93122d" stroke="#c9a349" stroke-width="2"/>
+      </svg></div>
+      <div class="h-in">
+        <div class="no">HONOR 07</div>
+        <h3>The Lake Fireworks</h3>
+        <div class="req">THE FULL MONTH — all thirty letters complete</div>
+        <span class="hand">the sky over the lake, just for you</span>
+      </div>
+    </div>
+    <div class="honor">
+      <div class="badge"><svg viewBox="0 0 80 80">
+        <rect x="14" y="30" width="52" height="28" rx="7" fill="#1f3d2e" stroke="#1e2f45" stroke-width="2.5"/>
+        <path d="M24 30 V58 M56 30 V58" stroke="#c89a5b" stroke-width="3.5"/>
+        <rect x="22" y="40" width="5" height="7" fill="#c9a349" stroke="#1e2f45" stroke-width="1.4"/>
+        <rect x="54" y="40" width="5" height="7" fill="#c9a349" stroke="#1e2f45" stroke-width="1.4"/>
+        <path d="M31 30 Q31 20 40 20 Q49 20 49 30" fill="none" stroke="#c89a5b" stroke-width="3.5"/>
+        <rect x="33" y="38" width="14" height="10" rx="1.5" fill="#f3ecd9" stroke="#1e2f45" stroke-width="1.8"/>
+        <text x="40" y="46" text-anchor="middle" font-family="Cinzel,serif" font-size="7" fill="#93122d" font-weight="600">CAMP</text>
+      </svg></div>
+      <div class="h-in">
+        <div class="no">HONOR 08</div>
+        <h3>The Camp Duffel</h3>
+        <div class="req">BROUGHT A GUEST — a friend signed the registry</div>
+        <span class="hand">the best camps grow by invitation</span>
+      </div>
+    </div>
+    <div class="honor">
+      <div class="badge"><svg viewBox="0 0 80 80">
+        <path d="M40 14 Q37 30 32 40 M40 14 Q45 28 50 36" stroke="#2d5240" stroke-width="2.4" fill="none"/>
+        <path d="M38 22 Q29 19 27 26 Q34 29 38 22 Z" fill="#2d5240" stroke="#1f3d2e" stroke-width="1.5"/>
+        <path d="M43 26 Q52 23 54 30 Q47 33 43 26 Z" fill="#2d5240" stroke="#1f3d2e" stroke-width="1.5"/>
+        <circle cx="30" cy="50" r="8" fill="#3a4e79" stroke="#1e2f45" stroke-width="2.2"/>
+        <circle cx="47" cy="46" r="7" fill="#3a4e79" stroke="#1e2f45" stroke-width="2.2"/>
+        <circle cx="41" cy="59" r="7.5" fill="#3a4e79" stroke="#1e2f45" stroke-width="2.2"/>
+        <path d="M27.8 47.8 L32.2 47.8 M30 45.6 L30 50 M45 44 L49 44 M47 42 L47 46 M38.9 56.9 L43.1 56.9 M41 54.8 L41 59" stroke="#c9a349" stroke-width="1.5"/>
+        <circle cx="27" cy="47" r="2" fill="#f3ecd9" opacity=".5"/><circle cx="44.5" cy="43.5" r="1.7" fill="#f3ecd9" opacity=".5"/><circle cx="38.5" cy="56" r="1.8" fill="#f3ecd9" opacity=".5"/>
+      </svg></div>
+      <div class="h-in">
+        <div class="no">HONOR 09</div>
+        <h3>Wild Blueberries</h3>
+        <div class="req">TEN WINS — ten entries in the Logbook</div>
+        <span class="hand">picked one morning at a time</span>
+      </div>
+    </div>
+    <div class="honor">
+      <div class="badge"><svg viewBox="0 0 80 80">
+        <ellipse cx="40" cy="52" rx="24" ry="10" fill="#f3ecd9" stroke="#1e2f45" stroke-width="2.5"/>
+        <path d="M20 50 Q24 46 30 48 M50 48 Q56 46 60 50" stroke="#93122d" stroke-width="3" fill="none"/>
+        <ellipse cx="40" cy="52" rx="11" ry="4.5" fill="#5b87a6" stroke="#1e2f45" stroke-width="2"/>
+        <path d="M34 48 Q33 36 38 32 Q42 30 42 24 Q42 18 47 18 Q53 18 53 24 L58 26 L53 28 Q52 32 48 34 Q52 40 49 48" fill="#20262b" stroke="#1e2f45" stroke-width="2.2"/>
+        <path d="M43 27 Q46 25 50 27" stroke="#f3ecd9" stroke-width="2.4" fill="none"/>
+        <circle cx="48" cy="22.5" r="1.4" fill="#93122d"/>
+        <circle cx="38" cy="40" r="1.4" fill="#f3ecd9"/><circle cx="43" cy="43" r="1.4" fill="#f3ecd9"/><circle cx="39" cy="45" r="1.4" fill="#f3ecd9"/>
+      </svg></div>
+      <div class="h-in">
+        <div class="no">HONOR 10</div>
+        <h3>The Loon Float</h3>
+        <div class="req">THE DAY OFF — took a full day while the business ran</div>
+        <span class="hand">the highest honor is doing nothing</span>
+      </div>
+    </div>
+    <div class="honor">
+      <div class="badge"><svg viewBox="0 0 80 80">
+        <circle cx="40" cy="40" r="27" fill="#1e2f45"/>
+        <circle cx="30" cy="32" r="10" fill="#c9a349" opacity=".25"/>
+        <ellipse cx="30" cy="32" rx="4.5" ry="6" fill="#c9a349" stroke="#f3ecd9" stroke-width="1.6"/>
+        <path d="M26.5 28 Q22 24 20 26 M33.5 28 Q38 24 40 26" stroke="#f3ecd9" stroke-width="1.6" fill="none"/>
+        <circle cx="52" cy="50" r="8" fill="#c9a349" opacity=".25"/>
+        <ellipse cx="52" cy="50" rx="3.6" ry="5" fill="#c9a349" stroke="#f3ecd9" stroke-width="1.5"/>
+        <path d="M49 46.5 Q45.5 43.5 44 45 M55 46.5 Q58.5 43.5 60 45" stroke="#f3ecd9" stroke-width="1.5" fill="none"/>
+        <circle cx="22" cy="54" r="1.6" fill="#c9a349"/><circle cx="58" cy="24" r="1.6" fill="#c9a349"/><circle cx="44" cy="18" r="1.2" fill="#c9a349"/>
+      </svg></div>
+      <div class="h-in">
+        <div class="no">HONOR 11</div>
+        <h3>Fireflies at Dusk</h3>
+        <div class="req">THE GOOD NEIGHBOR — helped a fellow camper in the Lodge</div>
+        <span class="hand">small lights, shared generously</span>
+      </div>
+    </div>
+    <div class="honor">
+      <div class="badge"><svg viewBox="0 0 80 80">
+        <circle cx="40" cy="38" r="26" fill="#f3ecd9" stroke="#1e2f45" stroke-width="2.5"/>
+        <circle cx="52" cy="24" r="5" fill="#c9a349" stroke="#a8874a" stroke-width="1.6"/>
+        <path d="M16 44 L30 24 L38 36 L45 27 L64 44 Z" fill="#2d5240" stroke="#1e2f45" stroke-width="2.2"/>
+        <path d="M27 28 L30 32 L33 28" fill="none" stroke="#f3ecd9" stroke-width="2"/>
+        <path d="M16 44 H64 V50 Q52 56 40 50 Q28 44 16 50 Z" fill="#5b87a6" stroke="#1e2f45" stroke-width="2.2"/>
+        <path d="M26 49 Q32 46 38 49 M44 51 Q50 48 56 51" stroke="#f3ecd9" stroke-width="1.6" fill="none"/>
+      </svg></div>
+      <div class="h-in">
+        <div class="no">HONOR 12</div>
+        <h3>Pleasant Mountain</h3>
+        <div class="req">SIXTY LETTERS — two months at Camp</div>
+        <span class="hand">look how far below the valley is</span>
+      </div>
+    </div>
+    <div class="honor">
+      <div class="badge"><svg viewBox="0 0 80 80">
+        <path d="M30 32 Q17 32 17 44 Q17 57 30 62 Q38 58 38 46 Q38 32 30 32 Z" fill="#93122d" stroke="#1e2f45" stroke-width="2.4"/>
+        <path d="M52 24 Q42 24 42 34 Q42 46 52 51 Q61 47 61 36 Q61 24 52 24 Z" fill="#93122d" stroke="#1e2f45" stroke-width="2.4"/>
+        <path d="M30 32 Q26 27 22 28 Q26 31 30 32 Q29 26 32 23 Q33 29 30 32 Q34 27 38 28 Q34 31 30 32 Z" fill="#2d5240" stroke="#1f3d2e" stroke-width="1.4"/>
+        <path d="M52 24 Q48 19 44 20 Q48 23 52 24 Q51 18 54 15 Q55 21 52 24 Q56 19 60 20 Q56 23 52 24 Z" fill="#2d5240" stroke="#1f3d2e" stroke-width="1.4"/>
+        <circle cx="26" cy="44" r="1.3" fill="#c9a349"/><circle cx="32" cy="50" r="1.3" fill="#c9a349"/><circle cx="25" cy="54" r="1.3" fill="#c9a349"/><circle cx="31" cy="40" r="1.3" fill="#c9a349"/>
+        <circle cx="49" cy="34" r="1.3" fill="#c9a349"/><circle cx="55" cy="40" r="1.3" fill="#c9a349"/><circle cx="49" cy="44" r="1.3" fill="#c9a349"/>
+      </svg></div>
+      <div class="h-in">
+        <div class="no">HONOR 13</div>
+        <h3>Wild Strawberries</h3>
+        <div class="req">A FULL SEASON — ninety letters</div>
+        <span class="hand">sweetness takes a season</span>
+      </div>
+    </div>
+    <div class="honor">
+      <div class="badge"><svg viewBox="0 0 80 80">
+        <path d="M32 12 H48 L56 25 V55 L48 68 H32 L24 55 V25 Z" fill="#7fae8e" stroke="#1e2f45" stroke-width="2.5"/>
+        <path d="M35 20 H45 L50 28 V52 L45 60 H35 L30 52 V28 Z" fill="#e8b4c0" stroke="#1e2f45" stroke-width="1.8"/>
+        <path d="M38 27 H42 L45 32 V48 L42 53 H38 L35 48 V32 Z" fill="#c76a86" stroke="#1e2f45" stroke-width="1.4"/>
+        <path d="M32 12 L35 20 M48 12 L45 20 M56 25 L50 28 M56 55 L50 52 M48 68 L45 60 M32 68 L35 60 M24 55 L30 52 M24 25 L30 28" stroke="#1e2f45" stroke-width="1.2"/>
+        <path d="M37 24 L34 30" stroke="#f3ecd9" stroke-width="1.6"/>
+      </svg></div>
+      <div class="h-in">
+        <div class="no">HONOR 14</div>
+        <h3>Maine Tourmaline</h3>
+        <div class="req">THE HANDOFF — wrote your first SOP (Skill № 030)</div>
+        <span class="hand">pressure, time, and something precious</span>
+      </div>
+    </div>
+    <div class="honor">
+      <div class="badge"><svg viewBox="0 0 80 80">
+        <path d="M28 36 H52 L40 66 Z" fill="#c89a5b" stroke="#1e2f45" stroke-width="2.4"/>
+        <path d="M32 42 L46 42 M35 49 L44 49 M37 55 L41 55 M32 36 L42 58 M48 36 L38 56" stroke="#a67a3e" stroke-width="1.6"/>
+        <path d="M28 36 Q23 27 31 24 Q31 15 40 17 Q49 15 49 24 Q57 27 52 36 Z" fill="#f3ecd9" stroke="#1e2f45" stroke-width="2.4"/>
+        <path d="M31 30 Q36 27 40 30 Q45 33 49 30" stroke="#e6dcc2" stroke-width="1.8" fill="none"/>
+        <circle cx="40" cy="13" r="3.4" fill="#93122d" stroke="#1e2f45" stroke-width="1.8"/>
+      </svg></div>
+      <div class="h-in">
+        <div class="no">HONOR 15</div>
+        <h3>The Ice Cream Run</h3>
+        <div class="req">THE CELEBRATION — toasted a termination in the Lodge</div>
+        <span class="hand">earned, scooped, savored</span>
+      </div>
+    </div>
+    <div class="honor">
+      <div class="badge"><svg viewBox="0 0 80 80">
+        <path d="M22 26 H58 L54 20 H26 Z" fill="#93122d" stroke="#1e2f45" stroke-width="2.2"/>
+        <path d="M25 26 V38 M55 26 V38" stroke="#1e2f45" stroke-width="2.4"/>
+        <rect x="16" y="38" width="48" height="7" rx="2" fill="#c89a5b" stroke="#1e2f45" stroke-width="2.2"/>
+        <rect x="13" y="47" width="24" height="8" rx="4" fill="#f3ecd9" stroke="#1e2f45" stroke-width="2.2"/>
+        <rect x="43" y="47" width="24" height="8" rx="4" fill="#f3ecd9" stroke="#1e2f45" stroke-width="2.2"/>
+        <path d="M12 63 Q20 59 28 63 Q36 67 44 63 Q52 59 60 63 Q64 65 68 63" stroke="#5b87a6" stroke-width="2.5" fill="none"/>
+        <path d="M34 38 V32 H46 V38" fill="none" stroke="#1e2f45" stroke-width="2"/>
+      </svg></div>
+      <div class="h-in">
+        <div class="no">HONOR 16</div>
+        <h3>The Pontoon</h3>
+        <div class="req">CROSSED THE TREELINE — began a private engagement</div>
+        <span class="hand">the House builds for you now</span>
+      </div>
+    </div>
+</div></div>
+<div class="ceremony">
+  <div class="plaque">THE AWARDING</div>
+  <h2>How honors are conferred</h2>
+  <p>Each evening, the Keeper reads the Logbook and the ledgers. When a camper earns her patch, she is named in the next morning's letter and applauded in the Lodge thread — by name, before all assembled. The final honor, the Pontoon, is conferred in person, on the water, at the start of her private engagement.</p>
+</div>
+<footer>
+  <div class="plaque">◆ &nbsp; THE MERIT WALL · CAMP HOUSE OF AI™ &nbsp; ◆</div>
+  <p>Wear them proudly. You did the drills.</p>
+</footer>
+<div class="stripe"></div>
+</body>
+</html>
