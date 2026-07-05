@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Lodge — Camp House of AI™</title>
+<meta name="description" content="The Lodge at Camp House of AI™ — where campers gather each sunrise for the day's letter and post their wins by the fire.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Cinzel:wght@400;500;600&family=La+Belle+Aurore&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --linen:#f6f1e6; --paper:#fbf7ec; --edge:#d8cdb0;
+    --navy:#1e2f45; --pine:#20362b; --pine-d:#16261e; --hunter:#1f3d2e;
+    --cran:#93122d; --gold:#c9a349; --brass:#a8874a; --brass-2:#c2a05e;
+    --camel:#c89a5b; --lake:#5b87a6; --ink:#26302a; --soft:#4d5a51;
+  }
+  body{background:var(--linen);color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:18px;line-height:1.7;
+    background-image:radial-gradient(rgba(32,54,43,.025) 1px, transparent 1px);background-size:5px 5px}
+  .stripe{height:14px;background:linear-gradient(90deg,
+    var(--navy) 0 18%, var(--linen) 18% 21%, var(--cran) 21% 34%, var(--linen) 34% 36%,
+    var(--gold) 36% 44%, var(--linen) 44% 46%, var(--hunter) 46% 62%, var(--linen) 62% 64%,
+    var(--lake) 64% 76%, var(--linen) 76% 78%, var(--cran) 78% 88%, var(--linen) 88% 90%, var(--navy) 90% 100%)}
+  .wrap{max-width:600px;margin:0 auto;padding:0 22px}
+
+  /* door header */
+  .door{background:linear-gradient(180deg,var(--pine) 0%,var(--pine-d) 100%);color:#e9e2cf;text-align:center;padding:52px 22px 46px;position:relative;overflow:hidden}
+  .door::before{content:'';position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(ellipse 90% 60% at 50% 115%, rgba(201,163,73,.18), transparent 60%)}
+  .plaque{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.42em;color:var(--brass-2)}
+  h1{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:clamp(44px,11vw,72px);color:#f2ecd9;line-height:1;margin:14px 0 8px}
+  .script{font-family:'La Belle Aurore',cursive;font-size:clamp(19px,4.8vw,25px);color:var(--gold)}
+  .door .back{display:inline-block;margin-top:22px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:.26em;color:#b9c2ad;text-decoration:none;border:1px dashed rgba(201,163,73,.5);padding:8px 16px}
+  .door .back:hover{color:var(--gold)}
+
+  section{padding:56px 0}
+  .marker{display:inline-flex;align-items:center;gap:10px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.3em;color:var(--pine)}
+  .marker::before,.marker::after{content:'';width:26px;height:1px;background:var(--brass)}
+  h2{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:clamp(27px,6.6vw,36px);color:var(--pine);line-height:1.15}
+
+  /* today's thread */
+  .thread{background:var(--paper);border:1px solid var(--edge);border-top:5px solid var(--cran);
+    box-shadow:0 16px 40px rgba(32,54,43,.16);padding:30px 26px;position:relative;margin-top:30px}
+  .thread .stamp{position:absolute;top:-14px;right:18px;background:var(--navy);color:var(--linen);
+    font-family:'Cinzel',serif;font-size:9.5px;letter-spacing:.18em;padding:6px 13px}
+  .thread .k{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.28em;color:var(--brass)}
+  .thread h3{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:25px;color:var(--pine);margin:7px 0 10px}
+  .thread p{font-size:17px;color:var(--soft)}
+  .thread .drill{background:rgba(91,135,166,.08);border-left:3px solid var(--lake);padding:12px 15px;margin-top:16px;font-size:16.5px;color:var(--ink)}
+  .thread .drill b{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.22em;color:var(--navy);display:block;margin-bottom:4px}
+
+  /* wins by the fire */
+  .fire{margin-top:14px}
+  .win{display:flex;gap:12px;align-items:flex-start;margin-top:16px}
+  .win .pfp{width:34px;height:34px;border-radius:50%;flex:none;border:2px solid var(--paper);box-shadow:0 2px 6px rgba(32,54,43,.25)}
+  .win .card{background:var(--paper);border:1px solid var(--edge);padding:12px 16px;font-size:16.5px}
+  .win .card .who{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.2em;color:var(--cran);display:block;margin-bottom:3px}
+  .applause{font-family:'La Belle Aurore',cursive;font-size:17px;color:var(--brass);margin-left:46px;margin-top:3px}
+
+  /* post your win — logbook */
+  .logbook{background:var(--paper);border:1px solid #d6cbae;box-shadow:0 20px 48px rgba(21,34,25,.25);
+    padding:32px 28px;position:relative;overflow:hidden;margin-top:30px}
+  .logbook::before{content:'';position:absolute;left:0;top:0;bottom:0;width:18px;
+    background:linear-gradient(90deg,#7d2231 0 70%,#5e162099 100%);box-shadow:inset -3px 0 6px rgba(0,0,0,.3)}
+  .lb-in{padding-left:16px}
+  .logbook h3{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.34em;color:var(--cran);text-align:center}
+  .logbook .inv{font-family:'La Belle Aurore',cursive;font-size:20px;color:var(--pine);text-align:center;display:block;margin:6px 0 14px}
+  .fld{width:100%;border:0;border-bottom:1px solid #c3b791;background:transparent;padding:13px 2px 7px;
+    font-family:'La Belle Aurore',cursive;font-size:19px;color:var(--navy);outline:none}
+  .fld::placeholder{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.22em;color:#a89a74}
+  textarea.fld{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17.5px;resize:vertical;min-height:74px;line-height:1.6}
+  .brass-btn{display:block;width:100%;margin-top:24px;padding:16px;cursor:pointer;
+    font-family:'Cinzel',serif;font-size:11.5px;letter-spacing:.26em;color:#2b2010;border:1px solid #8a6c38;
+    background:linear-gradient(180deg,#d4b573,#a8874a 55%,#8f7038);
+    box-shadow:0 4px 10px rgba(90,61,40,.35), inset 0 1px 0 rgba(255,255,255,.45)}
+  .brass-btn:hover{filter:brightness(1.06)}
+  .fine{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:.2em;color:#9b8d68;text-align:center;margin-top:12px;line-height:2}
+
+  /* the hearth rules */
+  .hearth{background:linear-gradient(180deg,#efe9da,#e6ddc8)}
+  .rule-card{background:var(--paper);border:1px solid var(--edge);padding:18px 22px;margin-top:14px;display:flex;gap:14px;align-items:baseline}
+  .rule-card .n{font-family:'Cinzel',serif;font-size:11px;color:var(--brass);white-space:nowrap}
+  .rule-card p{font-size:17px;color:var(--ink)}
+  .rule-card p b{font-family:'Playfair Display',serif;font-style:italic;color:var(--pine)}
+
+  footer{background:var(--pine-d);color:#a7b0a0;text-align:center;padding:46px 22px 56px}
+  footer .plaque{color:var(--brass-2)}
+  footer p{font-style:italic;font-size:16px;margin-top:10px}
+  .center{text-align:center}
+</style>
+</head>
+<body>
+
+<div class="stripe"></div>
+
+<!-- THE DOOR -->
+<header class="door">
+  <div class="plaque">CAMP HOUSE OF AI™ · MEMBERS' HALL</div>
+  <h1>The Lodge</h1>
+  <div class="script">come in out of the weather — the fire's lit</div>
+  <a class="back" href="index.html">← THE ARRIVAL DOCK</a>
+  <a class="back" href="merit-wall.html" style="margin-left:10px">THE MERIT WALL →</a>
+</header>
+
+<!-- TODAY'S THREAD -->
+<section>
+  <div class="wrap">
+    <div class="center"><span class="marker">TODAY'S LETTER · FRESH EACH SUNRISE</span></div>
+
+    <div class="thread" id="todayThread">
+      <div class="stamp" id="tStamp">№ —</div>
+      <div id="leverCover" style="text-align:center;padding:26px 6px">
+        <div style="font-family:'La Belle Aurore',cursive;font-size:21px;color:#93122d;margin-bottom:16px">a fresh letter is waiting, camper…</div>
+        <button onclick="pullLever()" style="cursor:pointer;font-family:Cinzel,serif;font-size:12px;letter-spacing:.26em;color:#2b2010;border:1px solid #8a6c38;background:linear-gradient(180deg,#d4b573,#a8874a 55%,#8f7038);box-shadow:0 4px 10px rgba(90,61,40,.35), inset 0 1px 0 rgba(255,255,255,.45);padding:17px 26px;width:100%">🕯️ PULL THE LEVER · TODAY'S LETTER</button>
+      </div>
+      <div id="letterBody" style="display:none">
+        <div class="k" id="tCat">FILED UNDER · —</div>
+        <h3 id="tTitle"></h3>
+        <p><em>The five-year-old version:</em> <span id="tKid"></span></p>
+        <p style="margin-top:10px"><em>The CEO version:</em> <span id="tCeo"></span></p>
+        <div class="drill"><b>☕ TODAY'S FIVE-MINUTE DRILL</b><span id="tDrill"></span></div>
+        <p style="margin-top:14px;font-family:'La Belle Aurore',cursive;font-size:19px;color:#93122d" id="tLodge"></p>
+      </div>
+    </div>
+    <script>
+    /* THE SELF-DEALING PRESS — the Camp deals its own letter daily. Change nothing. */
+    const CAMP_OPENED = "2026-07-04"; // opening day; letters rotate from here forever
+    const LETTERS = [{"no": 1, "cat": "MINDSET", "title": "Talk to AI like it's your best employee", "kid": "Don't shout single words at your helper. Tell her a little story about what you need, and she'll do it right.", "ceo": "Output quality is downstream of briefing quality. Brief it like a brilliant new hire on her first morning: who you are, what you need, what \"done beautifully\" looks like. Three sentences. Watch everything change.", "drill": "Take one task you'd normally Google or wing. Write those three sentences. Paste them into Claude or ChatGPT. Compare it to what you would have gotten from one-word prompting.", "lodge": "Post your before-and-after below — the gasps are the point."}, {"no": 2, "cat": "COPY", "title": "The Two-Sentence Brief", "kid": "Before you ask for help, say who it's for and what \"done\" looks like.", "ceo": "Output quality is set before you press enter. Two sentences — audience and definition of done — eliminate 80% of editing. You're not prompting; you're briefing.", "drill": "Before your next AI request, write: (1) who this is for, (2) what \"done beautifully\" looks like. Compare against your usual one-liner.", "lodge": "Post your before-and-after — the gasps are the point."}, {"no": 3, "cat": "MINDSET", "title": "Give Her a Name and a Job", "kid": "Helpers work better when they know what their job is.", "ceo": "An unnamed chatbot gets treated like a search bar. A named role — \"you are my senior copywriter\" — activates a consistent standard, a lens, and accountability. Staff, not software.", "drill": "Open a fresh chat: \"You are my [role]. You've done this for premium brands for 20 years. Your standard is [X].\" Then give it today's task.", "lodge": "Tell us what you named yours."}, {"no": 4, "cat": "TECH MAGIC", "title": "Bottle Your Voice", "kid": "Show it three things you wrote, and it learns to sound like you.", "ceo": "Your voice is your most defensible asset. Paste three pieces you're proud of and ask AI to describe your voice in ten adjectives and three rules. Save that paragraph — it's your voice bottle. Pour it into any future chat.", "drill": "Paste 3 favorite emails/posts → \"Describe my writing voice: 10 adjectives, 3 rules, 3 phrases I overuse.\" Save the answer somewhere permanent.", "lodge": "Share your favorite adjective it found."}, {"no": 5, "cat": "BUSINESS", "title": "The Follow-Up That Writes Itself", "kid": "Tell it what happened in the meeting, and it writes the letter after.", "ceo": "Follow-ups die because they take activation energy at your lowest-energy moment. Messy notes in, polished recap out: decisions, next steps, one clear ask. Sixty seconds, sent same-day, deals move.", "drill": "After today's next call, paste raw notes: \"Warm follow-up in my voice: 3 decisions, next steps with owners, one question at the end.\"", "lodge": "Post how long it took. (Members report under two minutes.)"}, {"no": 6, "cat": "CLAUDE", "title": "The Filing Cabinet Trick", "kid": "Put your important papers in one drawer, and Claude remembers them every time.", "ceo": "A Claude Project with your brand docs — offers, voice bottle, FAQ, pricing — means never re-explaining your business. Every conversation starts already knowing you. This is the difference between a temp and a tenured employee.", "drill": "Create a Project called \"[Your Business] HQ.\" Upload 3–5 core docs. Ask it: \"What do you now know about my business?\" Marvel.", "lodge": "What surprised you about its answer?"}, {"no": 7, "cat": "AI MANNERS", "title": "Thank It, Then Ask for Better", "kid": "Say \"good job — now can you make it even better?\"", "ceo": "First drafts are the floor, not the ceiling. The pros iterate: \"Good. Now warmer.\" \"Now half the length.\" \"Now like it's written on a porch, not in an office.\" Three rounds beats one perfect prompt every time.", "drill": "Take any AI draft today and push it three rounds with one small instruction each. Watch round three embarrass round one.", "lodge": "Post your favorite round-three line."}, {"no": 8, "cat": "MINDSET", "title": "The Morning Question", "kid": "Ask, \"if I could only do one thing today, what should it be?\"", "ceo": "Overwhelm is a prioritization failure, not a workload failure. Paste your to-do list and yesterday's loose ends: \"You're my chief of staff. If I can only do three things, which three, in what order, and why?\" Then obey.", "drill": "Do it right now with today's real list. Notice what it deprioritized that you would have done first.", "lodge": "What did it tell you to skip?"}, {"no": 9, "cat": "TECH MAGIC", "title": "Order From the Menu", "kid": "Ask for five choices before you pick one.", "ceo": "Asking for one answer gets you the average. Asking for five ranked options — with a one-line case for each — gets you the edges, where the good ideas live. Choose like an owner, don't accept like an order-taker.", "drill": "Next decision today: \"Give me 5 genuinely different options, ranked, one sentence on why each could win.\"", "lodge": "Did you pick № 1 — or the wildcard?"}, {"no": 10, "cat": "COPY", "title": "Steal Your Own Applause", "kid": "Your happy customers already wrote your ads. Go find them.", "ceo": "The most persuasive copy in your business is sitting in your DMs and testimonials. Paste every kind word you can find: \"Extract the exact phrases clients use to describe the result. Rank by emotional punch.\" That's your sales page, verbatim.", "drill": "Ten minutes of praise-mining. Paste everything. Extract the top 10 phrases.", "lodge": "Post the single best phrase a client ever gave you."}, {"no": 11, "cat": "BUSINESS", "title": "The Meeting You Didn't Attend", "kid": "It can read the long boring thing and tell you the good parts.", "ceo": "Transcripts, threads, 40-page PDFs — none of them deserve your reading time. They deserve a summary with stakes: \"Decisions made, money mentioned, risks raised, what needs me personally.\"", "drill": "Feed it the longest unread thing in your life right now with that exact prompt.", "lodge": "How many pages did you just *not* read?"}, {"no": 12, "cat": "CLAUDE", "title": "Hire the Devil's Advocate", "kid": "Ask it to tell you why your idea might not work — before you find out the hard way.", "ceo": "Your excitement is a blind spot. Before launching anything: \"Be the most skeptical, litigious, unimpressed version of my ideal client. Attack this offer. Then tell me the three fixes that would win you over.\" Red-team now or refund later.", "drill": "Run your current offer or next launch through that prompt today.", "lodge": "Share the objection that stung — and the fix."}, {"no": 13, "cat": "CHATGPT", "title": "Twenty, Then Three", "kid": "Ask for twenty ideas fast, then keep the best three.", "ceo": "Volume is where originality hides. The first ten ideas are everyone's ideas; brilliance starts around fourteen. Demand twenty, forbid repeats, then shortlist three and develop only those.", "drill": "\"20 content ideas for [your topic]. No two alike. Number them.\" Circle three. Delete the rest without guilt.", "lodge": "Post idea № 17. It's always № 17."}, {"no": 14, "cat": "AI MANNERS", "title": "Make It Interview You First", "kid": "Tell it to ask you questions before it starts.", "ceo": "The single highest-leverage line in prompting: \"Before you write anything, ask me 5 questions, one at a time, to close every gap. Don't draft until you have what you need.\" You stop getting generic work the moment it stops guessing.", "drill": "Add that line to any meaningful task today. Answer honestly. Compare the result to what you usually get.", "lodge": "Which of its questions made you actually think?"}, {"no": 15, "cat": "MINDSET", "title": "The Read-Back", "kid": "Ask, \"tell me what I just asked for, in your own words.\"", "ceo": "Misfires happen at the briefing, not the execution. \"Restate my request in your own words and list your assumptions before starting.\" Ten seconds of read-back saves thirty minutes of wrong work — same rule as any great kitchen.", "drill": "Use the read-back on today's most important request. Correct one assumption before it drafts.", "lodge": "What wrong assumption did you catch?"}, {"no": 16, "cat": "TECH MAGIC", "title": "The Template Forge", "kid": "When it makes something great, turn it into a cookie cutter.", "ceo": "Never let a great output be a one-off. \"Turn this into a reusable template with [brackets] for the parts that change, plus a one-line instruction for filling it.\" One good Tuesday becomes every Tuesday.", "drill": "Take the best thing AI made you this week. Forge it into a template. File it in your Project.", "lodge": "Name the template you just forged."}, {"no": 17, "cat": "COPY", "title": "Subject Lines by the Dozen", "kid": "Ask for twelve titles and pick the one that makes you curious.", "ceo": "The email lives or dies in the subject line, and your first instinct is usually the politest — which is the problem. Twelve options across four styles: curiosity, benefit, story, pattern-break. Pick with your gut, not your manners.", "drill": "Next email: \"12 subject lines — 3 curiosity, 3 benefit, 3 story, 3 unexpected. Under 6 words each.\"", "lodge": "Post the winner and the style it came from."}, {"no": 18, "cat": "BUSINESS", "title": "Rehearse the Hard Conversation", "kid": "Practice the tricky talk with a pretend person first.", "ceo": "Price objections, scope creep, the awkward renewal — rehearsed conversations go your way. \"Play a warm but hesitant client who says it's too expensive. Push back realistically. After each of my replies, coach me.\" Sales calls stop being scary when you've already had them.", "drill": "Five minutes of role-play on the conversation you've been avoiding.", "lodge": "One line from your rehearsal you'll use for real."}, {"no": 19, "cat": "CLAUDE", "title": "The Fine-Print Reader", "kid": "It reads the scary paper and tells you what it really says.", "ceo": "Contracts, platform policies, terms of service — paste them in: \"Plain English summary, then flag anything unusual, one-sided, or risky for someone in my position, ranked by concern.\" Not legal advice — but a brilliant first read before you pay for one.", "drill": "Feed it one agreement you signed without fully reading. Breathe.", "lodge": "Did it find anything you'd missed?"}, {"no": 20, "cat": "CHATGPT", "title": "Set It and Forget It", "kid": "Tell it who you are once, so you never have to say it again.", "ceo": "Custom Instructions are the difference between a stranger and staff. Fill in: who you are, who you serve, your voice rules, your pet peeves (\"never say 'unlock' or 'dive in'\"). Every future chat starts pre-briefed.", "drill": "Open Settings → Custom Instructions. Spend eight minutes. Include three banned words.", "lodge": "Post your funniest banned word."}, {"no": 21, "cat": "AI MANNERS", "title": "The Kind No", "kid": "It can help you say \"no thank you\" in a way that keeps friends.", "ceo": "Every yes you don't mean costs your calendar and your resentment budget. \"Draft a warm, firm decline: honor the relationship, close the door on this ask, leave one door open on my terms.\" Boundaries, beautifully worded, on demand.", "drill": "Draft the no you've owed someone for two weeks. Send it today.", "lodge": "How did it feel to finally send it?"}, {"no": 22, "cat": "MINDSET", "title": "One Task, Three Sizes", "kid": "Ask for the small way, the medium way, and the fancy way.", "ceo": "Perfectionism disguises itself as diligence. \"Give me the 10-minute version, the 1-hour version, and the flagship version of this task — and tell me which the situation actually deserves.\" Most things deserve the 10-minute version. Ship it.", "drill": "Run today's most dreaded task through three sizes. Do the one it recommends.", "lodge": "Which size did the task actually deserve?"}, {"no": 23, "cat": "TECH MAGIC", "title": "The Photograph Trick", "kid": "Take a picture of anything, and it can help you with it.", "ceo": "Your camera is an input device. Whiteboard scrawl → typed plan. Handwritten journal → organized notes. A screenshot of a confusing dashboard → plain-English explanation. If your eyes can see it, your AI can work with it.", "drill": "Photograph one analog thing today — notes, a form, the back of a package — and ask AI to do something useful with it.", "lodge": "Post the most surprising thing you've turned from paper to power."}, {"no": 24, "cat": "COPY", "title": "Your About Page, Aged Like Wine", "kid": "The story about you deserves to sound as good as you are now.", "ceo": "Your bio was written by a younger, more apologetic version of you. Paste it with your voice bottle (№ 004): \"Rewrite at my current level. Cut the throat-clearing. Lead with transformation, not chronology. Keep it true.\"", "drill": "Fifteen minutes: bio in, bottle in, new About page out. Publish before you can overthink it.", "lodge": "Post your new first line."}, {"no": 25, "cat": "BUSINESS", "title": "The Friday Numbers Ritual", "kid": "Show it your numbers and ask what story they tell.", "ceo": "Data without interpretation is decoration. Every Friday: paste the week's numbers — sales, sign-ups, opens, whatever you have. \"Three insights, one worry, one action for next week. Be blunt.\" Five minutes, and you run your business instead of it running you.", "drill": "Do the first one today, even with messy numbers. Messy in, clarity out.", "lodge": "Share your \"one action\" for next week."}, {"no": 26, "cat": "CLAUDE", "title": "The Editor Who Keeps Your Soul", "kid": "Ask it to fix your writing without changing how you sound.", "ceo": "The command is \"edit, don't rewrite\": \"Preserve my voice and structure. Fix only clarity, rhythm, and grammar. Show changes in brackets so I can accept or reject.\" You stay the author. It stays the red pen.", "drill": "Run something you wrote entirely yourself through edit-don't-rewrite mode.", "lodge": "Accept or reject — what did you overrule it on?"}, {"no": 27, "cat": "CHATGPT", "title": "Think Out Loud on the Dock", "kid": "You can just *talk* to it while you walk, and it takes notes.", "ceo": "Your best thinking doesn't happen at a keyboard. Voice mode + a twenty-minute walk = a rambling monologue that comes back as a structured memo: themes, decisions, next steps. Walk the dock; return with a strategy document.", "drill": "One voice-mode walk today. End with: \"Now organize everything I said into a memo with action items.\"", "lodge": "Post one idea that only showed up because you were walking."}, {"no": 28, "cat": "AI MANNERS", "title": "Demand the Confidence Score", "kid": "Ask, \"how sure are you?\" — and it will tell you the truth.", "ceo": "AI sounds equally confident when it's right and when it's guessing. The fix: \"Rate your confidence 1–10 on this answer, and flag anything you assumed or couldn't verify.\" One line turns a smooth talker into a trustworthy advisor.", "drill": "Add the confidence line to today's most important question. Investigate anything under an 8.", "lodge": "What did it confess to guessing?"}, {"no": 29, "cat": "MINDSET", "title": "Fire One Task Friday", "kid": "Every week, pick one chore and give it away forever.", "ceo": "Firing yourself as the bottleneck isn't one grand gesture — it's a weekly ritual. Each Friday, choose one recurring task, build its template and prompt, test it twice, and never do it manually again. Fifty-two Fridays is a different life.", "drill": "Fire your first task today. Recurring, annoying, rules-based — that's the profile. Build the prompt, run it, retire.", "lodge": "Announce what you fired. We celebrate terminations here."}, {"no": 30, "cat": "BUSINESS", "title": "The Handoff Letter", "kid": "Write down how you do your job, so helpers can do it for you.", "ceo": "Here is the graduation truth: every skill this month still requires *you* at the keyboard. The next level is systems that run without you. Start by dictating one task to AI as if training a new hire — every step, every judgment call, every \"it depends.\" Ask it to write the SOP. That document is the seed of your infrastructure: the thing agents are built from.", "drill": "Pick the task you fired on № 029. Talk through exactly how you do it. \"Turn this into a complete SOP a capable assistant — human or AI — could follow without me.\"", "lodge": "Post your SOP's title. And if writing it made you wonder *who builds the agents that run these* — that, dear camper, is a porch conversation. The House builds them. Ask us about the private engagements."}];
+    const _day = Math.floor((Date.now() - new Date(CAMP_OPENED+"T06:30:00")) / 86400000);
+    const L = LETTERS[((_day % LETTERS.length) + LETTERS.length) % LETTERS.length];
+    document.getElementById('tStamp').textContent = '№ ' + String(L.no).padStart(3,'0');
+    function pullLever(){
+      document.getElementById('leverCover').style.display = 'none';
+      const b = document.getElementById('letterBody'); b.style.display = 'block';
+      document.getElementById('tCat').textContent = 'FILED UNDER · ' + L.cat;
+      document.getElementById('tTitle').textContent = L.title;
+      document.getElementById('tKid').textContent = L.kid;
+      document.getElementById('tCeo').textContent = L.ceo;
+      document.getElementById('tDrill').textContent = L.drill;
+      document.getElementById('tLodge').textContent = L.lodge;
+    }
+    </script>
+
+    <div class="fire">
+      <div class="win">
+        <div class="pfp" style="background:radial-gradient(circle at 35% 30%,#5b87a6,#1e2f45)"></div>
+        <div class="card"><span class="who">DIANE · CAMPER SINCE JUNE</span>Tried the drill on a client email — my draft went from robotic to ME in one pass?!</div>
+      </div>
+      <div class="applause">— brava, Diane. that's the whole magic. 🕯️</div>
+      <div class="win">
+        <div class="pfp" style="background:radial-gradient(circle at 35% 30%,#c9a349,#93122d)"></div>
+        <div class="card"><span class="who">PRIYA · DAY 12</span>Best five minutes of my morning, every morning. Fired my first task on Friday. We had cake.</div>
+      </div>
+      <div class="applause">— we celebrate terminations here. 🛶</div>
+    </div>
+  </div>
+</section>
+
+<!-- POST YOUR WIN -->
+<section style="padding-top:8px">
+  <div class="wrap">
+    <div class="center"><span class="marker">THE LOGBOOK</span>
+    <h2 style="margin-top:12px">Post your win by the fire</h2></div>
+
+    <form class="logbook" onsubmit="postWin(event, this)">
+      <div class="lb-in">
+        <h3>— CAMPER'S LOGBOOK —</h3>
+        <span class="inv">one line is plenty. done beats perfect at this Camp.</span>
+        <input class="fld" type="text" placeholder="YOUR FIRST NAME" required>
+        <input class="fld" type="text" placeholder="SKILL № (E.G. 001)" required>
+        <textarea class="fld" placeholder="YOUR WIN — WHAT HAPPENED WHEN YOU DID THE DRILL" required></textarea>
+        <button class="brass-btn" type="submit">HANG IT ON THE WALL</button>
+        <div class="fine">WINS ARE READ BY THE HOUSE EACH EVENING · THE BEST EARN APPLAUSE IN TOMORROW'S LETTER</div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- THE HEARTH · HOUSE RULES -->
+<section class="hearth">
+  <div class="wrap">
+    <div class="center"><span class="marker">THE HEARTH</span>
+    <h2 style="margin-top:12px">Three rules, carved over the fireplace</h2></div>
+    <div class="rule-card"><span class="n">I.</span><p><b>Done beats perfect.</b> A one-line win posted today outranks a masterpiece never shared. We hang everything on the wall.</p></div>
+    <div class="rule-card"><span class="n">II.</span><p><b>We celebrate terminations.</b> Fired a task? Retired a chore? That's a toast at this Camp, not a confession.</p></div>
+    <div class="rule-card"><span class="n">III.</span><p><b>No jargon at the table.</b> If a five-year-old couldn't follow it, rewrite it. Elegance is explaining simply.</p></div>
+  </div>
+</section>
+
+<footer>
+  <div class="plaque">◆ &nbsp; THE LODGE · CAMP HOUSE OF AI™ &nbsp; ◆</div>
+  <p>New letter, new thread, every sunrise.<br>The Camp only moves forward.</p>
+</footer>
+
+<div class="stripe"></div>
+
+<script>
+/* ============================================================
+   LODGE WIRING — paste your endpoint below (your own system or
+   Lovable backend). Wins POST as JSON:
+   {name, skill_no, win, source, posted_at}
+   ============================================================ */
+const LODGE_ENDPOINT = ""; // <-- PASTE YOUR ENDPOINT URL HERE
+
+async function postWin(ev, form){
+  ev.preventDefault();
+  const f = form.querySelectorAll('.fld');
+  const payload = {
+    name: f[0].value.trim(),
+    skill_no: f[1].value.trim(),
+    win: f[2].value.trim(),
+    source: 'lodge-logbook',
+    posted_at: new Date().toISOString()
+  };
+  if(LODGE_ENDPOINT){
+    try{
+      await fetch(LODGE_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload), mode:'no-cors'});
+    }catch(e){ console.error('lodge post failed', e); }
+  }
+  form.querySelector('.fine').innerHTML = 'HUNG ON THE WALL, ' + payload.name.toUpperCase() + ' ✦<br>THE HOUSE READS EVERY WIN AT NIGHTFALL';
+  f.forEach(i=>i.value='');
+}
+</script>
+
+</body>
+</html>
