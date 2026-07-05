@@ -436,9 +436,14 @@ async function signRegistry(ev, form){
       });
     }catch(e){ console.error('registry post failed', e); }
   }
+  const lodgeUrl = 'lodge.html?welcome=' + encodeURIComponent(name);
   const letter = 'mailto:lisa@houseofai.boston?subject=' + encodeURIComponent('CAMP REGISTRY — ' + name) + '&body=' + encodeURIComponent('The House is asked to receive:' + '\n\nName: ' + name + '\nAddress: ' + email + '\nSigned: ' + new Date().toDateString());
-  fine.innerHTML = 'THE HOUSE RECEIVES YOU, ' + name.toUpperCase() + ' ✦<br><a href="' + letter + '" style="color:#93122d;font-weight:600">TAP TO POST YOUR LETTER →</a><br>YOUR FIRST LETTER ARRIVES AT SUNRISE';
+  fine.innerHTML = 'THE HOUSE RECEIVES YOU, ' + name.toUpperCase() + ' ✦<br>'
+    + '<a href="' + letter + '" onclick="setTimeout(function(){location.href=\'' + lodgeUrl + '\'},1200)" style="display:block;margin:10px 0 6px;color:#93122d;font-weight:600">① POST YOUR LETTER (RECORDS YOUR PLACE) →</a>'
+    + '<a href="' + lodgeUrl + '" style="display:block;color:#1e2f45;font-weight:600">② ENTER THE LODGE →</a>'
+    + '<span style="display:block;margin-top:8px">THE FIRE IS LIT — TAKING YOU INSIDE…</span>';
   form.querySelectorAll('input').forEach(i=>i.value='');
+  setTimeout(function(){ location.href = lodgeUrl; }, 7000);
 }
 
 /* ============================================================
