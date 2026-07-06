@@ -418,7 +418,7 @@
    or your Lovable backend URL). Signatures POST as JSON:
    {name, email, source, signed_at}
    ============================================================ */
-const REGISTRY_ENDPOINT = ""; // <-- PASTE YOUR ENDPOINT URL HERE
+const REGISTRY_ENDPOINT = "https://nprdpiqzzhtoytuyerwl.supabase.co/rest/v1/camp_registry"; // Supabase camp_registry table
 
 async function signRegistry(ev, form){
   ev.preventDefault();
@@ -430,9 +430,8 @@ async function signRegistry(ev, form){
     try{
       await fetch(REGISTRY_ENDPOINT, {
         method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({name:name, email:email, source:'camp-registry', signed_at:new Date().toISOString()}),
-        mode:'no-cors'
+        headers:{'Content-Type':'application/json','apikey':'sb_publishable_Cku1c24gvWILmjVnAPC-vw_sk1RJNct','Authorization':'Bearer sb_publishable_Cku1c24gvWILmjVnAPC-vw_sk1RJNct','Prefer':'return=minimal'},
+        body:JSON.stringify({name:name, email:email, source:'camp-registry', signed_at:new Date().toISOString()})
       });
     }catch(e){ console.error('registry post failed', e); }
   }

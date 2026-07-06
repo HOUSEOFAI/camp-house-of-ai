@@ -199,7 +199,7 @@
    Lovable backend). Wins POST as JSON:
    {name, skill_no, win, source, posted_at}
    ============================================================ */
-const LODGE_ENDPOINT = ""; // <-- PASTE YOUR ENDPOINT URL HERE
+const LODGE_ENDPOINT = "https://nprdpiqzzhtoytuyerwl.supabase.co/rest/v1/lodge_logbook"; // Supabase lodge_logbook table
 
 async function postWin(ev, form){
   ev.preventDefault();
@@ -213,7 +213,7 @@ async function postWin(ev, form){
   };
   if(LODGE_ENDPOINT){
     try{
-      await fetch(LODGE_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload), mode:'no-cors'});
+      await fetch(LODGE_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json','apikey':'sb_publishable_Cku1c24gvWILmjVnAPC-vw_sk1RJNct','Authorization':'Bearer sb_publishable_Cku1c24gvWILmjVnAPC-vw_sk1RJNct','Prefer':'return=minimal'}, body:JSON.stringify(payload)});
     }catch(e){ console.error('lodge post failed', e); }
   }
   const letter = 'mailto:lisa@houseofai.boston?subject=' + encodeURIComponent('LODGE LOGBOOK — ' + payload.name + ' · Skill № ' + payload.skill_no) + '&body=' + encodeURIComponent(payload.win + '\n\n— ' + payload.name + ', posted from the Lodge');
