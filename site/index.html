@@ -419,6 +419,7 @@
    {name, email, source, signed_at}
    ============================================================ */
 const REGISTRY_ENDPOINT = "https://nprdpiqzzhtoytuyerwl.supabase.co/rest/v1/camp_registry"; // Supabase camp_registry table
+const ML_GROUP_ID = "192256694705719155"; // MailerLite: Camp Campers group
 
 async function signRegistry(ev, form){
   ev.preventDefault();
@@ -426,6 +427,7 @@ async function signRegistry(ev, form){
   const name = inputs[0].value.trim();
   const email = inputs[1].value.trim();
   const fine = form.querySelector('.fine');
+  // 1. Save to Supabase database
   if(REGISTRY_ENDPOINT){
     try{
       await fetch(REGISTRY_ENDPOINT, {
@@ -435,6 +437,15 @@ async function signRegistry(ev, form){
       });
     }catch(e){ console.error('registry post failed', e); }
   }
+  // 2. Add to MailerLite → triggers 30-day skill sequence automatically
+  try{
+    const nameParts = name.trim().split(/\s+/);
+    await fetch('https://connect.mailerlite.com/api/subscribers', {
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiMWYzZmEwY2RjNjg5ZWVmZTM4OTc0ZjJjMWMwZTMzMTUwZGQzZTZhN2Y0ZjUzY2I3OTUyZWNmMjZlNTc1OTI0NmNhNTkzMWMxNGNmNDRmYzIiLCJpYXQiOjE3ODMzNTAwNDAuODU5MzMyLCJuYmYiOjE3ODMzNTAwNDAuODU5MzM0LCJleHAiOjQ5MzkwMjM2NDAuODUyNzI2LCJzdWIiOiIyNTEwNDg3Iiwic2NvcGVzIjpbXX0.mcpUFWuk1zxs8Bb9NnZyKTypn4iRqpsdj7WTJjqcN-atIYBgqcGkkBXXy1jfeVD0ABdQ2NvhuJqAYqFdMaHIKYQukFLGKwpU3YtWxDq3-C6Os26uTQMlibejcU1_rSzKBrTLIgPUpeqb1JiB-oOPEAld9_xvYs8P3HuG99ALIPN5J_8SaME4jO4_UBTMdMVehz2oQOsrHbPmRY8-Zlx8cfSX4t0Texo_C9Z1oq79fzp7XW7EmYrykjnZ5g4gL9IwuTJHDZvwT4tXc0Jh-PhPgCw959lRZ7xJq2rRDN2DW9LCSumc5xfly5OOsO3uB2yvwt6fRA1THoKKvLS4UsiRZc40s-iWf1FoXd9p-3ncj0KBFXamkxVKqjZNZOC0KqkPXqNDWVRORn4ZP-3xKNVwAZqXLIeQxlEa70QRTyqpZBbzfPlqMRcomqq84ZpT2FHfk22OdhUvatxm8aw_BK5RCzf_3st7aOdMr67BIjZ9h5D_XFeey__0ATsFuxxvhAQPlPFdjVKSJloOHQBkNFex9ZBtYqkTwWY5dTilOiqvXOarvdebc9c2ufXedm-oTcxD2RRBjzutoKykjysS3JzTQP1A-ITSY2Thq2rcMogzNK_mKm3munPCHgB6s4NVPk9cMByHdnYBpfZnQktWfNHTTUmAknXZJ_hJkYheEXy8w9o','Accept':'application/json'},
+      body:JSON.stringify({email:email, fields:{name:nameParts[0], last_name:nameParts.slice(1).join(' ')||''},groups:[ML_GROUP_ID],status:'active'})
+    });
+  }catch(e){ console.error('mailerlite post failed', e); }
   const lodgeUrl = 'lodge.html?welcome=' + encodeURIComponent(name);
   const letter = 'mailto:lisa@houseofai.boston?subject=' + encodeURIComponent('CAMP REGISTRY — ' + name) + '&body=' + encodeURIComponent('The House is asked to receive:' + '\n\nName: ' + name + '\nAddress: ' + email + '\nSigned: ' + new Date().toDateString());
   fine.innerHTML = 'THE HOUSE RECEIVES YOU, ' + name.toUpperCase() + ' ✦<br>'
